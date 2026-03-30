@@ -1,5 +1,5 @@
-from data.sofascore_api import get_matches
 from data.odds_api import get_odds
+from data.sofascore_api import get_team_rating
 from core.value import calculate_edge
 from core.parlay_builder import build_parlays
 from utils.telegram import send_telegram_message
@@ -9,12 +9,10 @@ from ml.update_results import update_results
 
 
 def run_pipeline():
-    print("🚀 BOT PRO INICIADO")
+    print("🔥 EDGE BOT PRO RUNNING")
 
-    # 🧠 ML update
     update_results()
 
-    matches = get_matches()
     odds_data = get_odds()
 
     picks = []
@@ -34,6 +32,9 @@ def run_pipeline():
             best = None
             best_edge = -999
 
+            home_rating = get_team_rating(home)
+            away_rating = get_team_rating(away)
+
             for o in outcomes:
                 odd = o["price"]
                 name = o["name"]
@@ -44,7 +45,9 @@ def run_pipeline():
                 if name.lower() == "draw":
                     continue
 
-                edge = calculate_edge(odd)
+                rating = home_rating if name == home else away_rating
+
+                edge = calculate_edge(odd, rating)
 
                 if edge > best_edge:
                     best_edge = edge
@@ -66,18 +69,17 @@ def run_pipeline():
         print("❌ No picks")
         return
 
-    picks = sorted(picks, key=lambda x: x["edge"], reverse=True)
-
     parlays = build_parlays(picks)
 
     save_picks(picks)
 
-    message = "🔥 PARLAYS AUTOMÁTICOS (ML + SOFASCORE)\n\n"
+    msg = "🔥 EDGE BOT PRO PARLAYS\n\n"
 
     for p in parlays:
-        message += f"{p['type']}:\n"
+        msg += f"{p['type']}:\n"
         for leg in p["legs"]:
-            message += f"• {leg['match']} → {leg['pick']} ({leg['odds']})\n"
-        message += f"💰 {p['odds']}\n\n"
+            msg += f"• {leg['match']} → {leg['pick']} ({leg['odds']})\n"
+        msg += f"💰 {p['odds']}\n\n"
 
-    send_telegram_message(message)
+    print(msg)
+    send_telegram_message(msg)
