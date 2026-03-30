@@ -100,7 +100,7 @@ def enviar_telegram(msg):
 
 # 🚀 MAIN
 def main():
-    partidos = obtener_partidos()
+    enviar_telegram("🔥 BOT FUNCIONANDO PERFECTO")
 
     if not partidos:
         return  # no hay partidos
