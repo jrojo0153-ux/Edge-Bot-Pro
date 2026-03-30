@@ -1,17 +1,28 @@
 import requests
 
-# 🔐 CONFIG
-TELEGRAM_TOKEN ="8725696882:AAEaz3TJ0KM2VC5q_gXWgqcNb694FN6XWaE"
-CHAT_ID ="8536626773"
-OPENAI_API_KEY ="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"
+# 🔐 CONFIG (PON TUS DATOS)
+TELEGRAM_TOKEN = "8725696882:AAEaz3TJ0KM2VC5q_gXWgqcNb694FN6XWaE"
+CHAT_ID = "8536626773"
+OPENAI_API_KEY = "sk-proj-tHBA53SOzLN28IoPrAUFXJd9dixuhA8KfsWdkD6qRxNEDmjJllK1PRPVpbmw898FwK0Nc-nJAUT3BlbkFJT0IS7EihY3qYdpe6fDZULeLsHrowAKc_ecqF3"
 
-# ⚽ Obtener partidos en vivo
+# ⚽ Obtener partidos en vivo (VERSIÓN ESTABLE)
 def obtener_partidos():
-    url = "https://www.thesportsdb.com/api/v2/json/3/livescore/soccer"
-    res = requests.get(url).json()
-    return res.get("events", [])
+    url = "https://www.thesportsdb.com/api/v1/json/3/livescore.php?s=Soccer"
 
-# 🧠 FILTROS PRO (AQUI ESTA EL DINERO)
+    try:
+        res = requests.get(url)
+
+        if res.status_code != 200:
+            return []
+
+        data = res.json()
+
+        return data.get("events", []) if data else []
+
+    except Exception as e:
+        return []
+
+# 🧠 FILTROS PRO
 def filtrar_partidos(partidos):
     filtrados = []
 
@@ -21,63 +32,79 @@ def filtrar_partidos(partidos):
             away = int(p.get("intAwayScore", 0))
             estado = p.get("strStatus", "")
 
-            # SOLO partidos en juego
+            # ❌ ignorar partidos terminados
             if "FT" in estado:
                 continue
 
             total_goles = home + away
 
-            # 🎯 FILTRO CLAVE
+            # 🎯 FILTRO (pocos goles = posible UNDER)
             if total_goles <= 2:
                 filtrados.append(p)
 
         except:
             continue
 
-    return filtrados[:3]  # máximo 3 para no gastar mucho
+    return filtrados[:3]  # máximo 3 partidos
 
-# 🧠 ANALISIS IA
+# 🧠 ANALISIS IA (PROTEGIDO)
 def analizar_con_ia(partido):
-    contexto = f"""
-    Analiza este partido en vivo como apostador profesional:
+    try:
+        contexto = f"""
+        Analiza este partido en vivo como experto en apuestas:
 
-    Partido: {partido['strEvent']}
-    Marcador: {partido['intHomeScore']} - {partido['intAwayScore']}
-    Estado: {partido['strStatus']}
+        Partido: {partido.get('strEvent')}
+        Marcador: {partido.get('intHomeScore')} - {partido.get('intAwayScore')}
+        Estado: {partido.get('strStatus')}
 
-    Detecta:
-    - Si es partido lento o abierto
-    - Mejor apuesta (UNDER / OVER / NO APOSTAR)
-    - Explicación corta
+        Responde:
+        - Ritmo (lento o alto)
+        - Mejor apuesta (UNDER / OVER / NO APOSTAR)
+        - Explicación corta
+        """
 
-    Responde en formato claro para Telegram.
-    """
+        url = "https://api.openai.com/v1/chat/completions"
 
-    url = "https://api.openai.com/v1/chat/completions"
-    headers = {
-        "Authorization": f"Bearer {OPENAI_API_KEY}",
-        "Content-Type": "application/json"
-    }
+        headers = {
+            "Authorization": f"Bearer {OPENAI_API_KEY}",
+            "Content-Type": "application/json"
+        }
 
-    data = {
-        "model": "gpt-4o-mini",
-        "messages": [
-            {"role": "system", "content": "Eres un experto en apuestas deportivas en vivo especializado en detectar edge."},
-            {"role": "user", "content": contexto}
-        ]
-    }
+        data = {
+            "model": "gpt-4o-mini",
+            "messages": [
+                {"role": "system", "content": "Eres un analista experto en apuestas deportivas en vivo."},
+                {"role": "user", "content": contexto}
+            ]
+        }
 
-    res = requests.post(url, headers=headers, json=data)
-    return res.json()["choices"][0]["message"]["content"]
+        res = requests.post(url, headers=headers, json=data)
 
-# 📲 TELEGRAM
+        if res.status_code != 200:
+            return "⚠️ Error IA"
+
+        json_res = res.json()
+
+        return json_res["choices"][0]["message"]["content"]
+
+    except Exception as e:
+        return f"Error IA: {e}"
+
+# 📲 ENVIAR A TELEGRAM
 def enviar_telegram(msg):
-    url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    requests.post(url, data={"chat_id": CHAT_ID, "text": msg})
+    try:
+        url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+        requests.post(url, data={"chat_id": CHAT_ID, "text": msg})
+    except:
+        pass
 
 # 🚀 MAIN
 def main():
     partidos = obtener_partidos()
+
+    if not partidos:
+        return  # no hay partidos
+
     buenos = filtrar_partidos(partidos)
 
     for partido in buenos:
@@ -86,12 +113,13 @@ def main():
         mensaje = f"""
 🔥 ALERTA EDGE
 
-{partido['strEvent']}
-{partido['intHomeScore']} - {partido['intAwayScore']}
+{partido.get('strEvent')}
+{partido.get('intHomeScore')} - {partido.get('intAwayScore')}
 
 {analisis}
 """
         enviar_telegram(mensaje)
 
+# ▶️ EJECUTAR
 if __name__ == "__main__":
     main()
