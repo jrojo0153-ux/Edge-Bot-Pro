@@ -2,7 +2,7 @@ name: EDGE BOT PRO
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/30 * * * *'   # 🔥 cada 30 min
   workflow_dispatch:
 
 jobs:
@@ -10,16 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Clonar repo
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v4
+      - name: Configurar Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - run: pip install -r requirements.txt
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
 
-      - run: python main.py
+      - name: Ejecutar bot
         env:
           API_KEY_ODDS: ${{ secrets.API_KEY_ODDS }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python main.py
