@@ -1,18 +1,17 @@
 import requests
 
 # =========================
-# 🔐 CONFIGURA TUS DATOS
+# 🔐 CONFIG
 # =========================
 TELEGRAM_TOKEN = "8725696882:AAEaz3TJ0KM2VC5q_gXWgqcNb694FN6XWaE"
 CHAT_ID = "8536626773"
 OPENAI_API_KEY = "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"
 
 # =========================
-# ⚽ OBTENER PARTIDOS
+# ⚽ PARTIDOS
 # =========================
 def obtener_partidos():
     url = "https://www.thesportsdb.com/api/v1/json/3/livescore.php?s=Soccer"
-
     try:
         res = requests.get(url)
         if res.status_code != 200:
@@ -23,7 +22,18 @@ def obtener_partidos():
         return []
 
 # =========================
-# 🎯 FILTRO SNIPER
+# ⏱️ EXTRAER MINUTO
+# =========================
+def obtener_minuto(estado):
+    try:
+        if "'" in estado:
+            return int(estado.replace("'", "").strip())
+    except:
+        return 0
+    return 0
+
+# =========================
+# 🎯 FILTRO SNIPER DIOS
 # =========================
 def filtrar_partidos(partidos):
     filtrados = []
@@ -37,20 +47,19 @@ def filtrar_partidos(partidos):
             if "FT" in estado:
                 continue
 
-            minuto = 0
-            if "'" in estado:
-                minuto = int(estado.replace("'", "").strip())
-
+            minuto = obtener_minuto(estado)
             total = home + away
 
-            # 🔴 OVER SNIPER
-            if 75 <= minuto <= 88 and home == away:
+            # 🔴 OVER DIOS
+            if 78 <= minuto <= 88 and home == away:
                 p["tipo"] = "OVER SNIPER"
+                p["minuto"] = minuto
                 filtrados.append(p)
 
-            # 🟢 UNDER SNIPER
-            elif minuto >= 70 and total <= 1:
+            # 🟢 UNDER DIOS
+            elif minuto >= 75 and total <= 1:
                 p["tipo"] = "UNDER SNIPER"
+                p["minuto"] = minuto
                 filtrados.append(p)
 
         except:
@@ -59,17 +68,25 @@ def filtrar_partidos(partidos):
     return filtrados[:2]
 
 # =========================
-# 📊 EDGE + STAKE
+# 📊 EDGE DINÁMICO
 # =========================
-def calcular_apuesta(tipo):
+def calcular_apuesta(partido):
+    tipo = partido.get("tipo")
+    minuto = partido.get("minuto", 0)
+
     if tipo == "OVER SNIPER":
-        prob = 0.65
-        cuota = 1.90
+        prob = 0.60 + (minuto - 75) * 0.01  # sube con el tiempo
+        cuota = 1.85
+
     elif tipo == "UNDER SNIPER":
-        prob = 0.70
-        cuota = 1.70
+        prob = 0.65 + (minuto - 70) * 0.005
+        cuota = 1.65
+
     else:
         return None
+
+    if prob > 0.80:
+        prob = 0.80
 
     prob_casa = 1 / cuota
     edge = prob - prob_casa
@@ -77,7 +94,9 @@ def calcular_apuesta(tipo):
     if edge <= 0:
         return None
 
-    stake = edge * 100
+    # 💰 Kelly fraccionado (más seguro)
+    kelly = (prob * cuota - 1) / (cuota - 1)
+    stake = kelly * 100 * 0.5  # 50% Kelly
 
     if stake > 40:
         stake = 40
@@ -85,28 +104,24 @@ def calcular_apuesta(tipo):
         stake = 10
 
     return {
-        "prob": prob,
+        "prob": round(prob, 2),
         "cuota": cuota,
         "edge": round(edge, 2),
         "stake": int(stake)
     }
 
 # =========================
-# 🧠 IA ANALISIS
+# 🧠 IA (OPCIONAL)
 # =========================
 def analizar_con_ia(partido):
     try:
         contexto = f"""
-        Analiza este partido en vivo como experto:
-
         Partido: {partido.get('strEvent')}
+        Minuto: {partido.get('minuto')}
         Marcador: {partido.get('intHomeScore')} - {partido.get('intAwayScore')}
-        Estado: {partido.get('strStatus')}
         Tipo: {partido.get('tipo')}
 
-        Responde breve:
-        - Confirmación del pick
-        - Riesgo (bajo/medio/alto)
+        Evalúa riesgo en una palabra (BAJO / MEDIO / ALTO)
         """
 
         url = "https://api.openai.com/v1/chat/completions"
@@ -119,7 +134,6 @@ def analizar_con_ia(partido):
         data = {
             "model": "gpt-4o-mini",
             "messages": [
-                {"role": "system", "content": "Eres un apostador profesional en vivo."},
                 {"role": "user", "content": contexto}
             ]
         }
@@ -127,12 +141,12 @@ def analizar_con_ia(partido):
         res = requests.post(url, headers=headers, json=data)
 
         if res.status_code != 200:
-            return "⚠️ Error IA"
+            return "RIESGO: N/A"
 
         return res.json()["choices"][0]["message"]["content"]
 
-    except Exception as e:
-        return f"Error IA: {e}"
+    except:
+        return "RIESGO: N/A"
 
 # =========================
 # 📲 TELEGRAM
@@ -151,16 +165,15 @@ def main():
     partidos = obtener_partidos()
 
     if not partidos:
-        enviar_telegram("⚠️ No hay partidos en vivo")
         return
 
     buenos = filtrar_partidos(partidos)
 
     if not buenos:
-        return  # modo sniper: silencio
+        return
 
     for partido in buenos:
-        datos = calcular_apuesta(partido.get("tipo"))
+        datos = calcular_apuesta(partido)
 
         if not datos:
             continue
@@ -168,19 +181,19 @@ def main():
         analisis = analizar_con_ia(partido)
 
         mensaje = f"""
-🎯 SNIPER + EDGE
+🎯 SNIPER DIOS
 
 {partido.get('strEvent')}
-⏱️ {partido.get('strStatus')}
+⏱️ Min {partido.get('minuto')}
 ⚽ {partido.get('intHomeScore')} - {partido.get('intAwayScore')}
 
-🔥 TIPO: {partido.get('tipo')}
+🔥 {partido.get('tipo')}
 
-📊 Probabilidad: {int(datos['prob']*100)}%
-💰 Cuota estimada: {datos['cuota']}
+📊 Prob: {datos['prob']*100}%
+💰 Cuota: {datos['cuota']}
 ⚡ Edge: {datos['edge']}
 
-💵 Stake recomendado: {datos['stake']}%
+💵 Stake: {datos['stake']}%
 
 {analisis}
 """
