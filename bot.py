@@ -98,14 +98,18 @@ def enviar_telegram(msg):
     except:
         pass
 
-# 🚀 MAIN
 def main():
-    enviar_telegram("🔥 BOT FUNCIONANDO PERFECTO")
+    partidos = obtener_partidos()
 
     if not partidos:
-        return  # no hay partidos
+        enviar_telegram("⚠️ No hay partidos en vivo")
+        return
 
     buenos = filtrar_partidos(partidos)
+
+    if not buenos:
+        enviar_telegram("⚠️ No hay partidos con edge ahora")
+        return
 
     for partido in buenos:
         analisis = analizar_con_ia(partido)
