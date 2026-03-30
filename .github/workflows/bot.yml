@@ -1,4 +1,4 @@
-name: Edge Bot Sniper Pro
+name: Edge Bot Final
 
 on:
   workflow_dispatch:
