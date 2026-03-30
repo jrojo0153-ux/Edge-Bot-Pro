@@ -1,22 +1,28 @@
 import json
 import os
-from datetime import datetime
 
-FILE = "ml/picks.json"
+FILE_PATH = "results.json"
 
-def save_picks(picks):
-    data = []
 
-    if os.path.exists(FILE):
-        with open(FILE) as f:
-            data = json.load(f)
+def save_results(data):
+    """
+    Guarda resultados históricos del bot
+    """
 
-    for p in picks:
-        data.append({
-            **p,
-            "date": str(datetime.now()),
-            "result": None
-        })
+    try:
+        # Si el archivo no existe → crear lista
+        if not os.path.exists(FILE_PATH):
+            history = []
+        else:
+            with open(FILE_PATH, "r") as f:
+                history = json.load(f)
 
-    with open(FILE, "w") as f:
-        json.dump(data, f, indent=2)
+        history.append(data)
+
+        with open(FILE_PATH, "w") as f:
+            json.dump(history, f, indent=2)
+
+        print("💾 Resultados guardados")
+
+    except Exception as e:
+        print("❌ Error guardando resultados:", e)
