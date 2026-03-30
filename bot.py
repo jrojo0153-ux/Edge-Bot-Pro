@@ -1,11 +1,15 @@
 import requests
 
-# 🔐 CONFIG (PON TUS DATOS)
-TELEGRAM_TOKEN = "8725696882:AAEaz3TJ0KM2VC5q_gXWgqcNb694FN6XWaE"
+# =========================
+# 🔐 CONFIGURA TUS DATOS
+# =========================
+TELEGRAM_TOKEN = "8679602699:AAHNDRLLbEFzojJDYozkZYLoS08xmXQEHn0"
 CHAT_ID = "8536626773"
-OPENAI_API_KEY = "sk-proj-tHBA53SOzLN28IoPrAUFXJd9dixuhA8KfsWdkD6qRxNEDmjJllK1PRPVpbmw898FwK0Nc-nJAUT3BlbkFJT0IS7EihY3qYdpe6fDZULeLsHrowAKc_ecqF3"
+OPENAI_API_KEY = "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"
 
-# ⚽ Obtener partidos en vivo (VERSIÓN ESTABLE)
+# =========================
+# ⚽ OBTENER PARTIDOS
+# =========================
 def obtener_partidos():
     url = "https://www.thesportsdb.com/api/v1/json/3/livescore.php?s=Soccer"
 
@@ -16,13 +20,14 @@ def obtener_partidos():
             return []
 
         data = res.json()
-
         return data.get("events", []) if data else []
 
-    except Exception as e:
+    except:
         return []
 
-# 🧠 FILTROS PRO
+# =========================
+# 🎯 FILTRO SNIPER PRO
+# =========================
 def filtrar_partidos(partidos):
     filtrados = []
 
@@ -32,22 +37,35 @@ def filtrar_partidos(partidos):
             away = int(p.get("intAwayScore", 0))
             estado = p.get("strStatus", "")
 
-            # ❌ ignorar partidos terminados
+            # ignorar terminados
             if "FT" in estado:
                 continue
 
-            total_goles = home + away
+            # obtener minuto
+            minuto = 0
+            if "'" in estado:
+                minuto = int(estado.replace("'", "").strip())
 
-            # 🎯 FILTRO (pocos goles = posible UNDER)
-            if total_goles <= 2:
+            total = home + away
+
+            # 🔴 OVER SNIPER
+            if 75 <= minuto <= 88 and home == away:
+                p["tipo"] = "OVER SNIPER"
+                filtrados.append(p)
+
+            # 🟢 UNDER SNIPER
+            elif minuto >= 70 and total <= 1:
+                p["tipo"] = "UNDER SNIPER"
                 filtrados.append(p)
 
         except:
             continue
 
-    return filtrados[:3]  # máximo 3 partidos
+    return filtrados[:2]  # máximo 2 picks
 
-# 🧠 ANALISIS IA (PROTEGIDO)
+# =========================
+# 🧠 ANALISIS IA
+# =========================
 def analizar_con_ia(partido):
     try:
         contexto = f"""
@@ -56,11 +74,11 @@ def analizar_con_ia(partido):
         Partido: {partido.get('strEvent')}
         Marcador: {partido.get('intHomeScore')} - {partido.get('intAwayScore')}
         Estado: {partido.get('strStatus')}
+        Tipo: {partido.get('tipo')}
 
-        Responde:
-        - Ritmo (lento o alto)
-        - Mejor apuesta (UNDER / OVER / NO APOSTAR)
-        - Explicación corta
+        Responde corto:
+        - Confirmar si el pick tiene valor
+        - Riesgo (bajo/medio/alto)
         """
 
         url = "https://api.openai.com/v1/chat/completions"
@@ -73,7 +91,7 @@ def analizar_con_ia(partido):
         data = {
             "model": "gpt-4o-mini",
             "messages": [
-                {"role": "system", "content": "Eres un analista experto en apuestas deportivas en vivo."},
+                {"role": "system", "content": "Eres un apostador profesional experto en apuestas en vivo."},
                 {"role": "user", "content": contexto}
             ]
         }
@@ -84,13 +102,14 @@ def analizar_con_ia(partido):
             return "⚠️ Error IA"
 
         json_res = res.json()
-
         return json_res["choices"][0]["message"]["content"]
 
     except Exception as e:
         return f"Error IA: {e}"
 
-# 📲 ENVIAR A TELEGRAM
+# =========================
+# 📲 TELEGRAM
+# =========================
 def enviar_telegram(msg):
     try:
         url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
@@ -98,6 +117,9 @@ def enviar_telegram(msg):
     except:
         pass
 
+# =========================
+# 🚀 MAIN
+# =========================
 def main():
     partidos = obtener_partidos()
 
@@ -108,22 +130,26 @@ def main():
     buenos = filtrar_partidos(partidos)
 
     if not buenos:
-        enviar_telegram("⚠️ No hay partidos con edge ahora")
-        return
+        return  # modo sniper: silencio si no hay edge
 
     for partido in buenos:
         analisis = analizar_con_ia(partido)
 
         mensaje = f"""
-🔥 ALERTA EDGE
+🎯 MODO SNIPER
 
 {partido.get('strEvent')}
-{partido.get('intHomeScore')} - {partido.get('intAwayScore')}
+⏱️ {partido.get('strStatus')}
+⚽ {partido.get('intHomeScore')} - {partido.get('intAwayScore')}
+
+🔥 TIPO: {partido.get('tipo')}
 
 {analisis}
 """
         enviar_telegram(mensaje)
 
+# =========================
 # ▶️ EJECUTAR
+# =========================
 if __name__ == "__main__":
     main()
