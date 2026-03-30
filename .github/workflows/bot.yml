@@ -1,8 +1,9 @@
 name: Edge Bot Pro
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: "*/30 * * * *"  # cada 30 minutos
+    - cron: "*/30 * * * *"
 
 jobs:
   run-bot:
