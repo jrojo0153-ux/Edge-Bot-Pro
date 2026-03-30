@@ -8,7 +8,7 @@ CHAT_ID = "8536626773"
 OPENAI_API_KEY = "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"
 
 # =========================
-# ⚽ PARTIDOS
+# ⚽ OBTENER PARTIDOS
 # =========================
 def obtener_partidos():
     url = "https://www.thesportsdb.com/api/v1/json/3/livescore.php?s=Soccer"
@@ -22,7 +22,7 @@ def obtener_partidos():
         return []
 
 # =========================
-# ⏱️ EXTRAER MINUTO
+# ⏱️ MINUTO
 # =========================
 def obtener_minuto(estado):
     try:
@@ -33,7 +33,7 @@ def obtener_minuto(estado):
     return 0
 
 # =========================
-# 🎯 FILTRO SNIPER DIOS
+# 🎯 FILTRO FINAL (VOLUMEN + EDGE)
 # =========================
 def filtrar_partidos(partidos):
     filtrados = []
@@ -50,14 +50,14 @@ def filtrar_partidos(partidos):
             minuto = obtener_minuto(estado)
             total = home + away
 
-            # 🔴 OVER DIOS
-            if 78 <= minuto <= 88 and home == away:
+            # 🔴 OVER
+            if 70 <= minuto <= 88 and home == away:
                 p["tipo"] = "OVER SNIPER"
                 p["minuto"] = minuto
                 filtrados.append(p)
 
-            # 🟢 UNDER DIOS
-            elif minuto >= 75 and total <= 1:
+            # 🟢 UNDER
+            elif minuto >= 70 and total <= 2:
                 p["tipo"] = "UNDER SNIPER"
                 p["minuto"] = minuto
                 filtrados.append(p)
@@ -65,43 +65,43 @@ def filtrar_partidos(partidos):
         except:
             continue
 
-    return filtrados[:2]
+    return filtrados[:5]  # máximo 5 picks
 
 # =========================
-# 📊 EDGE DINÁMICO
+# 📊 EDGE + STAKE PRO
 # =========================
 def calcular_apuesta(partido):
     tipo = partido.get("tipo")
     minuto = partido.get("minuto", 0)
 
     if tipo == "OVER SNIPER":
-        prob = 0.60 + (minuto - 75) * 0.01  # sube con el tiempo
+        prob = 0.58 + (minuto - 70) * 0.01
         cuota = 1.85
 
     elif tipo == "UNDER SNIPER":
-        prob = 0.65 + (minuto - 70) * 0.005
-        cuota = 1.65
+        prob = 0.62 + (minuto - 70) * 0.005
+        cuota = 1.70
 
     else:
         return None
 
-    if prob > 0.80:
-        prob = 0.80
+    if prob > 0.78:
+        prob = 0.78
 
     prob_casa = 1 / cuota
     edge = prob - prob_casa
 
-    if edge <= 0:
+    if edge < 0.03:
         return None
 
-    # 💰 Kelly fraccionado (más seguro)
+    # Kelly fraccionado
     kelly = (prob * cuota - 1) / (cuota - 1)
-    stake = kelly * 100 * 0.5  # 50% Kelly
+    stake = kelly * 100 * 0.5
 
-    if stake > 40:
-        stake = 40
-    elif stake < 10:
-        stake = 10
+    if stake > 35:
+        stake = 35
+    elif stake < 8:
+        stake = 8
 
     return {
         "prob": round(prob, 2),
@@ -121,7 +121,8 @@ def analizar_con_ia(partido):
         Marcador: {partido.get('intHomeScore')} - {partido.get('intAwayScore')}
         Tipo: {partido.get('tipo')}
 
-        Evalúa riesgo en una palabra (BAJO / MEDIO / ALTO)
+        Responde solo:
+        BAJO / MEDIO / ALTO
         """
 
         url = "https://api.openai.com/v1/chat/completions"
@@ -133,9 +134,7 @@ def analizar_con_ia(partido):
 
         data = {
             "model": "gpt-4o-mini",
-            "messages": [
-                {"role": "user", "content": contexto}
-            ]
+            "messages": [{"role": "user", "content": contexto}]
         }
 
         res = requests.post(url, headers=headers, json=data)
@@ -143,7 +142,7 @@ def analizar_con_ia(partido):
         if res.status_code != 200:
             return "RIESGO: N/A"
 
-        return res.json()["choices"][0]["message"]["content"]
+        return "RIESGO: " + res.json()["choices"][0]["message"]["content"]
 
     except:
         return "RIESGO: N/A"
@@ -178,10 +177,10 @@ def main():
         if not datos:
             continue
 
-        analisis = analizar_con_ia(partido)
+        riesgo = analizar_con_ia(partido)
 
         mensaje = f"""
-🎯 SNIPER DIOS
+🎯 EDGE BOT PRO FINAL
 
 {partido.get('strEvent')}
 ⏱️ Min {partido.get('minuto')}
@@ -189,13 +188,13 @@ def main():
 
 🔥 {partido.get('tipo')}
 
-📊 Prob: {datos['prob']*100}%
+📊 Prob: {int(datos['prob']*100)}%
 💰 Cuota: {datos['cuota']}
 ⚡ Edge: {datos['edge']}
 
 💵 Stake: {datos['stake']}%
 
-{analisis}
+{riesgo}
 """
         enviar_telegram(mensaje)
 
