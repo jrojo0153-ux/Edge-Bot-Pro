@@ -1,9 +1,9 @@
 from datetime import datetime
 
 from data.odds_api import get_odds
-from telegram import send_telegram_message
-from storage import save_results
+from utils.telegram import send_telegram_message
 from ml.model import predict_proba
+from ml.storage import save_results
 
 
 def run_pipeline():
@@ -11,7 +11,7 @@ def run_pipeline():
 
     odds_data = get_odds()
 
-    print(f"💰 Eventos con odds: {len(odds_data)}")
+    print(f"💰 Eventos: {len(odds_data)}")
 
     if not odds_data:
         print("❌ No odds disponibles")
@@ -20,37 +20,39 @@ def run_pipeline():
     picks = []
 
     # =========================
-    # 🔥 CREAR MATCHES DESDE ODDS (SIN API FOOTBALL)
+    # 🔥 GENERAR PICKS DESDE ODDS
     # =========================
     for event in odds_data:
+        try:
+            home = event["home"]
+            away = event["away"]
+            match_id = event["id"]
+            odds = event["odds"]
 
-        home = event["home"]
-        away = event["away"]
-        match_id = event["id"]
+            probs = predict_proba(event)
 
-        odds = event["odds"]
+            for outcome in ["home", "draw", "away"]:
+                odd = odds.get(outcome)
 
-        # ML dummy / real
-        probs = predict_proba(event)
+                if not odd or odd <= 1:
+                    continue
 
-        for outcome in ["home", "draw", "away"]:
-            odd = odds.get(outcome)
+                prob = probs.get(outcome, 0.33)
 
-            if not odd or odd <= 1:
-                continue
+                implied = 1 / odd
+                edge = prob - implied
 
-            prob = probs.get(outcome, 0.33)
+                picks.append({
+                    "match_id": match_id,
+                    "match": f"{home} vs {away}",
+                    "selection": outcome,
+                    "odd": odd,
+                    "edge": edge
+                })
 
-            implied = 1 / odd
-            edge = prob - implied
-
-            picks.append({
-                "match_id": match_id,
-                "match": f"{home} vs {away}",
-                "selection": outcome,
-                "odd": odd,
-                "edge": edge
-            })
+        except Exception as e:
+            print("⚠️ Error:", e)
+            continue
 
     # =========================
     # 🔥 ORDENAR POR EDGE
@@ -58,10 +60,10 @@ def run_pipeline():
     picks = sorted(picks, key=lambda x: x["edge"], reverse=True)
 
     # =========================
-    # ⚠️ FALLBACK SI EDGE = 0
+    # ⚠️ FALLBACK (SIEMPRE PICKS)
     # =========================
     if len(picks) == 0:
-        print("⚠️ No edge → usando odds directos")
+        print("⚠️ No edge → generando picks igual")
 
         for event in odds_data:
             for outcome in ["home", "draw", "away"]:
