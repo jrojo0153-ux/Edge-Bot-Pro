@@ -1,7 +1,7 @@
 import os
 import requests
 
-API_KEY = os.getenv("API_KEY_ODDS")
+API_KEY = os.getenv("44dd2a172a7f8f0a2d6e0ab9a5534dad")
 
 def get_odds():
     url = "https://api.the-odds-api.com/v4/sports/soccer/odds/"
