@@ -15,18 +15,15 @@ def obtener_partidos():
 
     try:
         res = requests.get(url)
-
         if res.status_code != 200:
             return []
-
         data = res.json()
         return data.get("events", []) if data else []
-
     except:
         return []
 
 # =========================
-# 🎯 FILTRO SNIPER PRO
+# 🎯 FILTRO SNIPER
 # =========================
 def filtrar_partidos(partidos):
     filtrados = []
@@ -37,11 +34,9 @@ def filtrar_partidos(partidos):
             away = int(p.get("intAwayScore", 0))
             estado = p.get("strStatus", "")
 
-            # ignorar terminados
             if "FT" in estado:
                 continue
 
-            # obtener minuto
             minuto = 0
             if "'" in estado:
                 minuto = int(estado.replace("'", "").strip())
@@ -61,23 +56,56 @@ def filtrar_partidos(partidos):
         except:
             continue
 
-    return filtrados[:2]  # máximo 2 picks
+    return filtrados[:2]
 
 # =========================
-# 🧠 ANALISIS IA
+# 📊 EDGE + STAKE
+# =========================
+def calcular_apuesta(tipo):
+    if tipo == "OVER SNIPER":
+        prob = 0.65
+        cuota = 1.90
+    elif tipo == "UNDER SNIPER":
+        prob = 0.70
+        cuota = 1.70
+    else:
+        return None
+
+    prob_casa = 1 / cuota
+    edge = prob - prob_casa
+
+    if edge <= 0:
+        return None
+
+    stake = edge * 100
+
+    if stake > 40:
+        stake = 40
+    elif stake < 10:
+        stake = 10
+
+    return {
+        "prob": prob,
+        "cuota": cuota,
+        "edge": round(edge, 2),
+        "stake": int(stake)
+    }
+
+# =========================
+# 🧠 IA ANALISIS
 # =========================
 def analizar_con_ia(partido):
     try:
         contexto = f"""
-        Analiza este partido en vivo como experto en apuestas:
+        Analiza este partido en vivo como experto:
 
         Partido: {partido.get('strEvent')}
         Marcador: {partido.get('intHomeScore')} - {partido.get('intAwayScore')}
         Estado: {partido.get('strStatus')}
         Tipo: {partido.get('tipo')}
 
-        Responde corto:
-        - Confirmar si el pick tiene valor
+        Responde breve:
+        - Confirmación del pick
         - Riesgo (bajo/medio/alto)
         """
 
@@ -91,7 +119,7 @@ def analizar_con_ia(partido):
         data = {
             "model": "gpt-4o-mini",
             "messages": [
-                {"role": "system", "content": "Eres un apostador profesional experto en apuestas en vivo."},
+                {"role": "system", "content": "Eres un apostador profesional en vivo."},
                 {"role": "user", "content": contexto}
             ]
         }
@@ -101,8 +129,7 @@ def analizar_con_ia(partido):
         if res.status_code != 200:
             return "⚠️ Error IA"
 
-        json_res = res.json()
-        return json_res["choices"][0]["message"]["content"]
+        return res.json()["choices"][0]["message"]["content"]
 
     except Exception as e:
         return f"Error IA: {e}"
@@ -130,13 +157,18 @@ def main():
     buenos = filtrar_partidos(partidos)
 
     if not buenos:
-        return  # modo sniper: silencio si no hay edge
+        return  # modo sniper: silencio
 
     for partido in buenos:
+        datos = calcular_apuesta(partido.get("tipo"))
+
+        if not datos:
+            continue
+
         analisis = analizar_con_ia(partido)
 
         mensaje = f"""
-🎯 MODO SNIPER
+🎯 SNIPER + EDGE
 
 {partido.get('strEvent')}
 ⏱️ {partido.get('strStatus')}
@@ -144,12 +176,18 @@ def main():
 
 🔥 TIPO: {partido.get('tipo')}
 
+📊 Probabilidad: {int(datos['prob']*100)}%
+💰 Cuota estimada: {datos['cuota']}
+⚡ Edge: {datos['edge']}
+
+💵 Stake recomendado: {datos['stake']}%
+
 {analisis}
 """
         enviar_telegram(mensaje)
 
 # =========================
-# ▶️ EJECUTAR
+# ▶️ RUN
 # =========================
 if __name__ == "__main__":
     main()
