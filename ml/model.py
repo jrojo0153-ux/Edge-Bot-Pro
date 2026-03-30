@@ -1,13 +1,7 @@
 import random
 
-def predict_proba(event):
-    """
-    Retorna probabilidades para home, draw, away
-    Siempre devuelve algo (aunque sea básico)
-    """
-
-    # Probabilidades base realistas
-    home = random.uniform(0.35, 0.5)
+def predict_proba(match):
+    home = random.uniform(0.4, 0.6)
     draw = random.uniform(0.2, 0.3)
     away = 1 - home - draw
 
