@@ -1,4 +1,4 @@
-name: Edge Bot Pro
+name: Edge Bot Sniper
 
 on:
   workflow_dispatch:
@@ -10,16 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.x"
 
-      - name: Install dependencies
-        run: pip install requests
+      - run: pip install requests
 
-      - name: Run bot
-        run: python bot.py
+      - run: python bot.py
