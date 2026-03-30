@@ -1,12 +1,12 @@
-name: Edge Bot Final
+name: EDGE BOT PRO
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
 
 jobs:
-  run-bot:
+  run:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,8 +14,12 @@ jobs:
 
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.x"
+          python-version: '3.10'
 
-      - run: pip install requests
+      - run: pip install -r requirements.txt
 
-      - run: python bot.py
+      - run: python main.py
+        env:
+          API_KEY_ODDS: ${{ secrets.API_KEY_ODDS }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
