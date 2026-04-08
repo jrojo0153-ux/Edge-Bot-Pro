@@ -1,25 +1,37 @@
-name: EDGE BOT PRO
+name: EDGE BOT PRO - Multi Deporte (Fútbol + NBA + MLB)
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
-  workflow_dispatch:
+    - cron: "*/30 * * * *"    # Ejecuta cada 30 minutos
+  workflow_dispatch:          # Permite ejecutar manualmente desde GitHub
 
 jobs:
-  run:
+  run-bot:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout código
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v4
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.12"
+          cache: 'pip'                    # Cachea las dependencias para que sea más rápido
 
-      - run: pip install -r requirements.txt
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - run: python main.py
+      - name: Ejecutar Edge Bot Pro
+        run: python main.py
         env:
           API_KEY_ODDS: ${{ secrets.API_KEY_ODDS }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Mostrar logs (opcional - útil para depurar)
+        if: always()
+        run: |
+          echo "Ejecución finalizada. Revisa los logs arriba para ver picks y errores."
