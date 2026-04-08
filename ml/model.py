@@ -15,27 +15,28 @@ def load_or_train_model(sport):
     
     if os.path.exists(model_path):
         print(f"✅ Modelo cargado para {sport}")
-        return joblib.load(model_path), None   # scaler no se usa en dummy
+        return joblib.load(model_path), None
     
-    print(f"🔄 Creando modelo para {sport}...")
+    print(f"🔄 Creando modelo dummy para {sport}...")
     
-    # Cargamos el nuevo histórico para backtesting futuro (por ahora no entrenamos ML real)
+    # Intentamos cargar el histórico nuevo para mostrar info
     try:
         df = pd.read_csv("data/Historico.csv")
-        print(f"✅ Histórico cargado: {len(df)} picks | Deportes: {df['Deporte'].unique()}")
-    except:
-        print("⚠️ No se encontró Historico.csv")
+        df.columns = df.columns.str.strip()  # Limpia espacios
+        print(f"✅ Histórico cargado: {len(df)} picks")
+        print(f"   Deportes: {df['Deporte'].unique()}")
+        print(f"   Columnas: {df.columns.tolist()}")
+    except Exception as e:
+        print(f"⚠️ No se pudo leer Historico.csv: {e}")
     
-    # Modelo Dummy inteligente (basado en EV real)
+    # Modelo Dummy inteligente
     class SmartDummyModel:
         def predict_proba(self, X):
             n = len(X)
-            if SPORTS[sport]["has_draw"]:
-                # Fútbol: más equilibrio
-                return np.array([[0.38, 0.28, 0.34]] * n)
+            if SPORTS.get(sport, {}).get("has_draw", False):
+                return np.array([[0.38, 0.28, 0.34]] * n)   # away, draw, home (Fútbol)
             else:
-                # NBA/MLB: ligera ventaja local
-                return np.array([[0.46, 0.00, 0.54]] * n)
+                return np.array([[0.46, 0.00, 0.54]] * n)   # away, draw=0, home (NBA/MLB)
     
     model = SmartDummyModel()
     joblib.dump(model, model_path)
@@ -43,9 +44,8 @@ def load_or_train_model(sport):
     return model, None
 
 def predict_proba(match, model, scaler, sport):
-    """Devuelve probabilidades + usa Cuota del match si existe"""
     try:
-        probs = model.predict_proba([[0]])[0]  # dummy input
+        probs = model.predict_proba([[0]])[0]
     except:
         probs = [0.46, 0.0, 0.54] if not SPORTS[sport]["has_draw"] else [0.38, 0.28, 0.34]
     
@@ -65,4 +65,4 @@ def predict_proba(match, model, scaler, sport):
             "home": round(p_home / total, 3),
             "away": round(p_away / total, 3),
             "draw": 0.0
-    }
+        }
