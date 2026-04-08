@@ -7,6 +7,22 @@ from config import SPORTS
 MODEL_DIR = "ml/models"
 os.makedirs(MODEL_DIR, exist_ok=True)
 
+# ==================== MODELO DUMMY (fuera de funciones) ====================
+class SmartDummyModel:
+    """Modelo simple que no depende de entrenamiento pesado"""
+    def predict_proba(self, X):
+        n = len(X)
+        if SPORTS.get(self.sport, {}).get("has_draw", False):
+            # Fútbol: away, draw, home
+            return np.array([[0.38, 0.28, 0.34]] * n)
+        else:
+            # NBA / MLB: away, draw=0, home
+            return np.array([[0.46, 0.00, 0.54]] * n)
+    
+    # Guardamos el deporte para usarlo en predict_proba
+    def __init__(self, sport):
+        self.sport = sport
+
 def get_model_path(sport):
     return f"{MODEL_DIR}/model_{sport}.pkl"
 
@@ -14,40 +30,41 @@ def load_or_train_model(sport):
     model_path = get_model_path(sport)
     
     if os.path.exists(model_path):
-        print(f"✅ Modelo cargado para {sport}")
-        return joblib.load(model_path), None
+        try:
+            model = joblib.load(model_path)
+            print(f"✅ Modelo cargado para {sport}")
+            return model, None
+        except:
+            print(f"⚠️ Error cargando modelo, creando nuevo...")
     
     print(f"🔄 Creando modelo dummy para {sport}...")
     
-    # Intentamos cargar el histórico nuevo para mostrar info
+    # Mostrar info del histórico
     try:
         df = pd.read_csv("data/Historico.csv")
-        df.columns = df.columns.str.strip()  # Limpia espacios
+        df.columns = df.columns.str.strip()
         print(f"✅ Histórico cargado: {len(df)} picks")
-        print(f"   Deportes: {df['Deporte'].unique()}")
-        print(f"   Columnas: {df.columns.tolist()}")
+        print(f"   Deportes: {df['Deporte'].unique().tolist()}")
     except Exception as e:
         print(f"⚠️ No se pudo leer Historico.csv: {e}")
     
-    # Modelo Dummy inteligente
-    class SmartDummyModel:
-        def predict_proba(self, X):
-            n = len(X)
-            if SPORTS.get(sport, {}).get("has_draw", False):
-                return np.array([[0.38, 0.28, 0.34]] * n)   # away, draw, home (Fútbol)
-            else:
-                return np.array([[0.46, 0.00, 0.54]] * n)   # away, draw=0, home (NBA/MLB)
-    
-    model = SmartDummyModel()
+    # Crear y guardar el modelo
+    model = SmartDummyModel(sport)
     joblib.dump(model, model_path)
-    print(f"✅ Modelo dummy creado para {sport}")
+    print(f"✅ Modelo dummy guardado para {sport}")
+    
     return model, None
 
 def predict_proba(match, model, scaler, sport):
+    """Predicción usando el modelo dummy"""
     try:
         probs = model.predict_proba([[0]])[0]
     except:
-        probs = [0.46, 0.0, 0.54] if not SPORTS[sport]["has_draw"] else [0.38, 0.28, 0.34]
+        # Fallback seguro
+        if SPORTS[sport]["has_draw"]:
+            probs = [0.38, 0.28, 0.34]
+        else:
+            probs = [0.46, 0.00, 0.54]
     
     has_draw = SPORTS[sport]["has_draw"]
     
