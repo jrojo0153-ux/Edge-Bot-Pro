@@ -1,43 +1,21 @@
-import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
-import joblib
-import os
+from sklearn.linear_model import LogisticRegression
+import numpy as np
 
-def entrenar_modelo():
-    ruta_csv = 'data/Historico.csv'
-    if not os.path.exists(ruta_csv):
-        print("⚠️ Historico.csv no encontrado. Sube tus resultados para activar la IA.")
-        return None
-        
-    try:
-        df = pd.read_csv(ruta_csv)
-        # Diferencia de cuotas para detectar las 'bombas' del reporte
-        df['diff'] = df['home_odds'] - df['away_odds']
-        
-        X = df[['home_odds', 'away_odds', 'diff']]
-        y = df['resultado'] # 0:Local, 1:Empate, 2:Visitante
-        
-        # Modelo balanceado para evitar el error de Accuracy 1.0 (Overfitting)
-        modelo = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=42)
-        modelo.fit(X, y)
-        
-        os.makedirs('models', exist_ok=True)
-        joblib.dump(modelo, 'models/modelo.pkl')
-        print("✅ IA entrenada con éxito.")
-        return modelo
-    except Exception as e:
-        print(f"❌ Error entrenamiento: {e}")
-        return None
+# Datos de ejemplo: [fuerza_local, fuerza_visitante]
+X_train = np.array([[10, 5], [5, 10], [8, 8], [2, 6]]) 
+y_train = np.array(['home', 'away', 'draw', 'away']) # Resultados: 0=away, 1=draw, 2=home
 
-def cargar_modelo():
-    if os.path.exists('models/modelo.pkl'):
-        return joblib.load('models/modelo.pkl')
-    return None
+model = LogisticRegression()
+model.fit(X_train, y_train)
 
-def predecir(modelo, partido):
-    try:
-        h, a = float(partido['home_odds']), float(partido['away_odds'])
-        prob = modelo.predict_proba([[h, a, h-a]])[0]
-        return {"home": float(prob[0]), "draw": float(prob[1]), "away": float(prob[2])}
-    except:
-        return None
+def predict_proba(match_stats):
+    # match_stats: [fuerza_local, fuerza_visitante]
+    probs = model.predict_proba([match_stats])[0]
+    return {
+        "away": round(probs[0], 3),
+        "draw": round(probs[1], 3),
+        "home": round(probs[2], 3)
+    }
+
+# predicción consistente: 
+# print(predict_proba([9, 4])) 
