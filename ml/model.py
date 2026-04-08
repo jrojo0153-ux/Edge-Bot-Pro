@@ -1,61 +1,77 @@
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import joblib
 import os
+from config import SPORTS
 
-MODEL_PATH = "ml/model.pkl"
-SCALER_PATH = "ml/scaler.pkl"
+MODEL_DIR = "ml/models"
+os.makedirs(MODEL_DIR, exist_ok=True)
 
-def load_or_train_model():
-    if os.path.exists(MODEL_PATH) and os.path.exists(SCALER_PATH):
-        model = joblib.load(MODEL_PATH)
-        scaler = joblib.load(SCALER_PATH)
-        print("✅ Modelo cargado")
-        return model, scaler
+def get_model_path(sport):
+    return f"{MODEL_DIR}/model_{sport}.pkl"
+
+def get_scaler_path(sport):
+    return f"{MODEL_DIR}/scaler_{sport}.pkl"
+
+def load_or_train_model(sport):
+    model_path = get_model_path(sport)
+    scaler_path = get_scaler_path(sport)
     
-    # Entrenamiento con datos históricos
-    df = pd.read_csv("data/Historico.csv")
-    # Features simples pero reales (puedes expandir mucho más)
-    df["home_fav"] = df["home_odds"] < df["away_odds"]
+    if os.path.exists(model_path) and os.path.exists(scaler_path):
+        return joblib.load(model_path), joblib.load(scaler_path)
+    
+    # Entrenamiento básico (mejora agregando más datos por deporte)
+    df = pd.read_csv("data/Historico.csv")  # Por ahora usa el mismo, luego separa por deporte
+    
+    # Features básicas
     df["odds_diff"] = df["home_odds"] - df["away_odds"]
+    df["home_fav"] = df["home_odds"] < df["away_odds"]
     
-    # Target: 0=away win, 1=draw, 2=home win (simplificado)
-    df["target"] = np.where(df["resultado"] == 1, 2, 
-                   np.where(df["resultado"] == 0, 0, 1))  # Ajusta según tu CSV
+    # Target simplificado (ajusta según tu CSV)
+    df["target"] = 2  # placeholder - reemplaza con lógica real de resultado
     
     X = df[["home_odds", "away_odds", "odds_diff", "home_fav"]]
-    y = df["target"]
-    
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    y = df["target"]  # 0=away, 1=draw, 2=home
     
     scaler = StandardScaler()
-    X_train_scaled = scaler.fit_transform(X_train)
+    X_scaled = scaler.fit_transform(X)
     
     model = LogisticRegression(max_iter=1000, class_weight='balanced')
-    model.fit(X_train_scaled, y_train)
+    model.fit(X_scaled, y)
     
-    # Guardar
-    joblib.dump(model, MODEL_PATH)
-    joblib.dump(scaler, SCALER_PATH)
-    
-    print(f"✅ Modelo entrenado. Accuracy aproximada: {model.score(X_train_scaled, y_train):.2f}")
+    joblib.dump(model, model_path)
+    joblib.dump(scaler, scaler_path)
+    print(f"✅ Modelo entrenado para {sport}")
     return model, scaler
 
-def predict_proba(match, model, scaler):
-    # match debe tener home_odds y away_odds
-    features = np.array([[match.get("home_odds", 2.0), 
-                          match.get("away_odds", 2.0),
-                          match.get("home_odds", 2.0) - match.get("away_odds", 2.0),
-                          match.get("home_odds", 2.0) < match.get("away_odds", 2.0)]])
+def predict_proba(match, model, scaler, sport):
+    features = np.array([[
+        match.get("odds", {}).get("home", 2.0),
+        match.get("odds", {}).get("away", 2.0),
+        match.get("odds", {}).get("home", 2.0) - match.get("odds", {}).get("away", 2.0),
+        match.get("odds", {}).get("home", 2.0) < match.get("odds", {}).get("away", 2.0)
+    ]])
     
     features_scaled = scaler.transform(features)
     probs = model.predict_proba(features_scaled)[0]
     
-    return {
-        "home": round(probs[2], 3),   # Ajusta índices según tu target
-        "draw": round(probs[1], 3),
-        "away": round(probs[0], 3)
+    has_draw = SPORTS[sport]["has_draw"]
+    
+    if has_draw:
+        return {
+            "home": round(probs[2], 3),
+            "draw": round(probs[1], 3),
+            "away": round(probs[0], 3)
+        }
+    else:
+        # NBA y MLB no tienen empate → normalizamos home/away
+        p_home = probs[2]
+        p_away = probs[0]
+        total = p_home + p_away
+        return {
+            "home": round(p_home / total, 3),
+            "away": round(p_away / total, 3),
+            "draw": 0.0
     }
