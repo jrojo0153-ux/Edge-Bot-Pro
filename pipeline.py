@@ -1,87 +1,59 @@
 from data.odds_api import get_odds
-from ml.model import predict_proba
-from ml.storage import save_results
-from ml.update_results import update_results
-from utils.telegram import send_telegram_message
+from ml.model import load_or_train_model, predict_proba
+from core.value import calculate_edge   # Crea este archivo si quieres
+from core.parlay_builder import build_parlays
+from core.telegram import send_telegram_message
+from utils.logger import get_logger
 from datetime import datetime
 
+logger = get_logger()
 
 def run_pipeline():
-    print("🚀 EDGE BOT PRO")
-
-    update_results()
-
+    logger.info("🚀 Iniciando Edge Bot Pro v2.0")
+    
+    model, scaler = load_or_train_model()
     matches = get_odds()
-
+    
+    if not matches:
+        logger.warning("No se obtuvieron partidos")
+        return
+    
     picks = []
-
+    
     for match in matches:
-        probs = predict_proba(match)
-
+        probs = predict_proba(match, model, scaler)
+        
         for outcome in ["home", "draw", "away"]:
             odd = match["odds"].get(outcome)
-
             if not odd:
                 continue
-
+                
             prob = probs[outcome]
-            implied = 1 / odd
-            edge = prob - implied
-
-            picks.append({
-                "match_id": match["id"],
-                "match": f"{match['home']} vs {match['away']}",
-                "pick": outcome,
-                "odds": odd,
-                "edge": edge
-            })
-
-    # ordenar por edge
-    picks = sorted(picks, key=lambda x: x["edge"], reverse=True)
-
-    # 1 pick por partido
-    unique = []
-    used = set()
-
-    for p in picks:
-        if p["match_id"] not in used:
-            unique.append(p)
-            used.add(p["match_id"])
-
-    picks = unique[:10]
-
-    if len(picks) < 3:
-        print("❌ No picks suficientes")
+            edge = prob - (1 / odd)
+            
+            if edge > 0.07:  # Umbral configurable
+                picks.append({
+                    "match": f"{match['home']} vs {match['away']}",
+                    "pick": outcome,
+                    "odds": odd,
+                    "edge": edge,
+                    "prob": prob
+                })
+    
+    picks = sorted(picks, key=lambda x: x["edge"], reverse=True)[:15]
+    
+    if len(picks) < 2:
+        logger.info("No hay suficientes picks con edge positivo")
         return
-
-    conservador = picks[:2]
-    balanceado = picks[:4]
-    agresivo = picks[:6]
-
-    def calc(parlay):
-        total = 1
-        for p in parlay:
-            total *= p["odds"]
-        return round(total, 2)
-
-    def format_parlay(name, parlay):
-        text = f"\n{name}:\n"
-        for p in parlay:
-            text += f"• {p['match']} → {p['pick']} ({p['odds']}, edge {round(p['edge'],3)})\n"
-        text += f"💰 Cuota: {calc(parlay)}\n"
-        return text
-
-    msg = "🔥 EDGE BOT PRO\n"
-
-    msg += format_parlay("🛡️ Conservador", conservador)
-    msg += format_parlay("⚖️ Balanceado", balanceado)
-    msg += format_parlay("💣 Agresivo", agresivo)
-
-    print(msg)
-
+    
+    parlays = build_parlays(picks)
+    
+    msg = f"🔥 **EDGE BOT PRO v2.0** - {datetime.now().strftime('%Y-%m-%d %H:%M')}\n\n"
+    for p in parlays:
+        msg += f"**{p['type']}** ({p['odds']}):\n"
+        for leg in p["legs"]:
+            msg += f"• {leg['match']} → {leg['pick']} @ {leg['odds']} (edge {leg['edge']:.3f})\n"
+        msg += "\n"
+    
     send_telegram_message(msg)
-
-    save_results({
-        "date": str(datetime.now()),
-        "picks": picks
-    })
+    logger.info(f"Enviado mensaje con {len(picks)} picks")
