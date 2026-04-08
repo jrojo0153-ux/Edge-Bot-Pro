@@ -1,6 +1,8 @@
 home_team,away_team,home_odds,away_odds,resultado,deporte,liga
-Local_NBA,Vis_NBA,1.55,2.40,0,Basquet,NBA
-Local_MLB,Vis_MLB,1.70,2.15,2,Beisbol,MLB
-Bomba_Sud,Favorito,67.0,1.05,2,Futbol,Sudamericana
-Bomba_Arg,Favorito,100.0,1.02,2,Futbol,Argentina
-Local_MX,Vis_MX,2.10,3.20,1,Futbol,LigaMX
+Real Madrid,Bayern,1.90,3.40,0,Futbol,UCL
+Washington,Oregon,4.27,1.25,0,Beisbol,NCAA
+Alcaraz,Baez,1.46,2.80,2,Tenis,ATP
+Barracas,Vasco,25.0,1.10,1,Futbol,SUD
+Wizards,Bulls,15.0,1.05,2,Basquet,NBA
+Argentinos,Banfield,67.0,1.02,2,Futbol,ARG
+Petrolero,Racing,101.0,1.01,2,Futbol,SUD
