@@ -1,77 +1,66 @@
 import os
 import requests
-# Ajustamos el import para que coincida con tu archivo en la carpeta data
-try:
-    from data.sofascore_api import obtener_partidos
-except ImportError:
-    # Si la función tiene otro nombre en tu archivo, cámbialo aquí
-    def obtener_partidos(): return [] 
-
+# Sincronizamos con tus nombres de archivos reales
+from data.odds_api import get_odds 
 from ml.model import cargar_modelo, entrenar_modelo, predecir
 
-# --- CONFIGURACIÓN NIVEL CONSERVADOR ---
-EDGE_MINIMO = 0.08  # 8% de ventaja
-CUOTA_MAXIMA = 10.0 # Filtro de seguridad para evitar 'bombas'
+# --- CONFIGURACIÓN SEGÚN TU REPORTE ---
+EDGE_MINIMO = 0.08  # Nivel Conservador (8%)
+CUOTA_MAXIMA = 10.0 # Recomendación técnica del reporte
 
 def enviar_telegram(mensaje):
-    token = os.getenv("TELEGRAM_BOT_TOKEN")
+    token = os.getenv("API_KEY_TELEGRAM") # Asegúrate que este sea el nombre en tus Secrets
     chat_id = os.getenv("TELEGRAM_CHAT_ID")
     if token and chat_id:
         url = f"https://api.telegram.org/bot{token}/sendMessage"
         try:
             requests.post(url, json={"chat_id": chat_id, "text": mensaje, "parse_mode": "Markdown"}, timeout=10)
         except:
-            print("❌ Error Telegram")
+            pass
 
 def main():
     print("🚀 SISTEMA EDGE PRO ACTIVADO")
     
-    # 1. Cargar o entrenar modelo con tus resultados
+    # 1. Cargar IA
     modelo = cargar_modelo() or entrenar_modelo()
     
-    if not modelo:
-        print("⚠️ No hay modelo entrenado. Usando lógica de respaldo.")
-
-    # 2. Obtener partidos de SofaScore
-    partidos = obtener_partidos()
+    # 2. Obtener partidos (Usando tu archivo odds_api.py)
+    partidos = get_odds()
     if not partidos:
-        print("❌ No se recibieron partidos de SofaScore. Revisa data/sofascore_api.py")
+        print("❌ No se pudieron obtener partidos.")
         return
 
     print(f"📊 Analizando {len(partidos)} eventos...")
 
-    for partido in partidos:
+    for p in partidos:
         try:
-            odds = float(partido.get('home_odds', 0))
+            # Adaptamos a la estructura de tu odds_api.py
+            home_odds = p['odds'].get('home')
+            away_odds = p['odds'].get('away')
             
-            # FILTRO DE SEGURIDAD: Evita las cuotas de 67 y 100 que bajan tu ROI
-            if odds > CUOTA_MAXIMA or odds < 1.10:
+            if not home_odds or home_odds > CUOTA_MAXIMA:
                 continue
 
-            # 3. Predicción con la IA real
+            # 3. Predicción
             if modelo:
-                res = predecir(modelo, partido)
+                res = predecir(modelo, {"home_odds": home_odds, "away_odds": away_odds})
                 prob_home = res['home'] if res else 0
             else:
-                # Lógica básica si no hay modelo aún
-                prob_home = 0.5 
+                prob_home = 0.5
 
-            edge = prob_home - (1/odds)
+            edge = prob_home - (1/home_odds)
             
             # 4. Alerta de Valor
             if edge > EDGE_MINIMO:
                 msg = (f"🎯 *ALERTA EDGE PRO*\n"
-                       f"🏟️ {partido['home_team']} vs {partido['away_team']}\n"
+                       f"🏟️ {p['home']} vs {p['away']}\n"
                        f"📈 *Edge:* {round(edge*100, 2)}%\n"
-                       f"💰 *Cuota:* {odds}\n"
-                       f"🤖 *IA Prob:* {round(prob_home*100, 1)}%")
+                       f"💰 *Cuota:* {home_odds}")
                 enviar_telegram(msg)
-                print(f"✅ Alerta: {partido['home_team']}")
+                print(f"✅ Alerta enviada para {p['home']}")
 
         except Exception as e:
             continue
-
-    print("🏁 Proceso terminado.")
 
 if __name__ == "__main__":
     main()
