@@ -1,8 +1,6 @@
-home_team,away_team,home_odds,away_odds,resultado,deporte,liga
-Real Madrid,Bayern,1.90,3.40,0,Futbol,UCL
-Washington,Oregon,4.27,1.25,0,Beisbol,NCAA
-Alcaraz,Baez,1.46,2.80,2,Tenis,ATP
-Barracas,Vasco,25.0,1.10,1,Futbol,SUD
-Wizards,Bulls,15.0,1.05,2,Basquet,NBA
-Argentinos,Banfield,67.0,1.02,2,Futbol,ARG
-Petrolero,Racing,101.0,1.01,2,Futbol,SUD
+Fecha,Deporte,Evento,Pick_Sugerido,Cuota,EV_Proyectado,Stake_Kelly,Resultado_Real,Estado
+06.04.26,NBA,Denver Nuggets vs Portland Trail Blazers,Denver -11.5 (HA),N/A,4.25%,1.50%,DEN 137 - 132 POR,FALLO
+06.04.26,NBA,Memphis Grizzlies vs Cleveland Cavaliers,Under 218.5 Puntos,N/A,5.10%,1.80%,MEM 126 - 142 CLE,FALLO
+06.04.26,NBA,San Antonio Spurs vs Philadelphia 76ers,San Antonio +7.5 (HA),N/A,6.30%,1.20%,SAS 115 - 102 PHI,ACIERTO
+06.04.26,NBA,Atlanta Hawks vs New York Knicks,NY Knicks (ML),N/A,3.95%,2.10%,ATL 105 - 108 NYK,ACIERTO
+06.04.26,NBA,Orlando Magic vs Detroit Pistons,Orlando -8.5 (HA),N/A,7.15%,2.50%,ORL 123 - 107 DET,ACIERTO
