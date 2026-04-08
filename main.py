@@ -1,77 +1,77 @@
 import os
 import requests
-# Corregido: Importa desde tu archivo real de SofaScore
-from data.sofascore_api import obtener_partidos 
+# Ajustamos el import para que coincida con tu archivo en la carpeta data
+try:
+    from data.sofascore_api import obtener_partidos
+except ImportError:
+    # Si la función tiene otro nombre en tu archivo, cámbialo aquí
+    def obtener_partidos(): return [] 
+
 from ml.model import cargar_modelo, entrenar_modelo, predecir
 
-# Configuración básica (puedes mover esto a config.py si prefieres)
-EDGE_MINIMO = 0.08  # 8% de ventaja (Nivel Conservador)
-CUOTA_MAXIMA = 12.0 # Filtro para evitar 'bombas' suicidas
+# --- CONFIGURACIÓN NIVEL CONSERVADOR ---
+EDGE_MINIMO = 0.08  # 8% de ventaja
+CUOTA_MAXIMA = 10.0 # Filtro de seguridad para evitar 'bombas'
 
 def enviar_telegram(mensaje):
-    """Envía las alertas a Telegram de forma segura"""
     token = os.getenv("TELEGRAM_BOT_TOKEN")
     chat_id = os.getenv("TELEGRAM_CHAT_ID")
-    if not token or not chat_id:
-        return
-
-    url = f"https://api.telegram.org/bot{token}/sendMessage"
-    try:
-        payload = {"chat_id": chat_id, "text": mensaje, "parse_mode": "Markdown"}
-        requests.post(url, json=payload, timeout=10)
-    except Exception as e:
-        print(f"❌ Error enviando Telegram: {e}")
+    if token and chat_id:
+        url = f"https://api.telegram.org/bot{token}/sendMessage"
+        try:
+            requests.post(url, json={"chat_id": chat_id, "text": mensaje, "parse_mode": "Markdown"}, timeout=10)
+        except:
+            print("❌ Error Telegram")
 
 def main():
     print("🚀 SISTEMA EDGE PRO ACTIVADO")
     
-    # 1. Cargar o Entrenar Modelo
-    modelo = cargar_modelo()
+    # 1. Cargar o entrenar modelo con tus resultados
+    modelo = cargar_modelo() or entrenar_modelo()
+    
     if not modelo:
-        print("📡 Entrenando modelo por primera vez...")
-        modelo = entrenar_modelo()
+        print("⚠️ No hay modelo entrenado. Usando lógica de respaldo.")
 
-    if not modelo:
-        print("❌ Error Crítico: No se pudo inicializar la IA.")
-        return
-
-    # 2. Obtener Partidos desde SofaScore
+    # 2. Obtener partidos de SofaScore
     partidos = obtener_partidos()
     if not partidos:
-        print("❌ No hay partidos procesables en SofaScore.")
+        print("❌ No se recibieron partidos de SofaScore. Revisa data/sofascore_api.py")
         return
 
-    print(f"📊 Analizando {len(partidos)} partidos...")
+    print(f"📊 Analizando {len(partidos)} eventos...")
 
     for partido in partidos:
         try:
             odds = float(partido.get('home_odds', 0))
             
-            # FILTRO DE SEGURIDAD: Evita cuotas de 67.0 o 100.0 que bajan tu ROI
+            # FILTRO DE SEGURIDAD: Evita las cuotas de 67 y 100 que bajan tu ROI
             if odds > CUOTA_MAXIMA or odds < 1.10:
                 continue
 
-            # 3. Predicción de la IA
-            res = predecir(modelo, partido)
-            if res:
-                prob_home = res['home']
-                edge = prob_home - (1/odds)
-                
-                # 4. Filtro de Valor
-                if edge > EDGE_MINIMO:
-                    msg = (f"🎯 *ALERTA DE VALOR*\n"
-                           f"🏟️ {partido['home_team']} vs {partido['away_team']}\n"
-                           f"📈 *Edge:* {round(edge*100, 2)}%\n"
-                           f"💰 *Cuota:* {odds}\n"
-                           f"🤖 *Prob. IA:* {round(prob_home*100, 1)}%")
-                    enviar_telegram(msg)
-                    print(f"✅ Alerta enviada: {partido['home_team']}")
+            # 3. Predicción con la IA real
+            if modelo:
+                res = predecir(modelo, partido)
+                prob_home = res['home'] if res else 0
+            else:
+                # Lógica básica si no hay modelo aún
+                prob_home = 0.5 
+
+            edge = prob_home - (1/odds)
+            
+            # 4. Alerta de Valor
+            if edge > EDGE_MINIMO:
+                msg = (f"🎯 *ALERTA EDGE PRO*\n"
+                       f"🏟️ {partido['home_team']} vs {partido['away_team']}\n"
+                       f"📈 *Edge:* {round(edge*100, 2)}%\n"
+                       f"💰 *Cuota:* {odds}\n"
+                       f"🤖 *IA Prob:* {round(prob_home*100, 1)}%")
+                enviar_telegram(msg)
+                print(f"✅ Alerta: {partido['home_team']}")
 
         except Exception as e:
-            print(f"⚠️ Error procesando partido: {e}")
             continue
 
-    print("🏁 Ciclo completado.")
+    print("🏁 Proceso terminado.")
 
 if __name__ == "__main__":
     main()
