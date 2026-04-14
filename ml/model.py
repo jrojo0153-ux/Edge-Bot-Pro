@@ -8,6 +8,7 @@ MODEL_DIR = "ml/models"
 os.makedirs(MODEL_DIR, exist_ok=True)
 
 # ==================== MODELO DUMMY (fuera de funciones) ====================
+# Mantenerlo aquí arriba es lo que soluciona el error de Pickling
 class SmartDummyModel:
     """Modelo simple que no depende de entrenamiento pesado"""
     def predict_proba(self, X):
@@ -19,7 +20,6 @@ class SmartDummyModel:
             # NBA / MLB: away, draw=0, home
             return np.array([[0.46, 0.00, 0.54]] * n)
     
-    # Guardamos el deporte para usarlo en predict_proba
     def __init__(self, sport):
         self.sport = sport
 
@@ -35,20 +35,12 @@ def load_or_train_model(sport):
             print(f"✅ Modelo cargado para {sport}")
             return model, None
         except:
+            # Si el archivo .pkl viejo da error, el 'except' lo ignorará y creará uno nuevo corregido
             print(f"⚠️ Error cargando modelo, creando nuevo...")
     
     print(f"🔄 Creando modelo dummy para {sport}...")
     
-    # Mostrar info del histórico
-    try:
-        df = pd.read_csv("data/Historico.csv")
-        df.columns = df.columns.str.strip()
-        print(f"✅ Histórico cargado: {len(df)} picks")
-        print(f"   Deportes: {df['Deporte'].unique().tolist()}")
-    except Exception as e:
-        print(f"⚠️ No se pudo leer Historico.csv: {e}")
-    
-    # Crear y guardar el modelo
+    # Crear y guardar el modelo con la nueva estructura global
     model = SmartDummyModel(sport)
     joblib.dump(model, model_path)
     print(f"✅ Modelo dummy guardado para {sport}")
@@ -60,7 +52,6 @@ def predict_proba(match, model, scaler, sport):
     try:
         probs = model.predict_proba([[0]])[0]
     except:
-        # Fallback seguro
         if SPORTS[sport]["has_draw"]:
             probs = [0.38, 0.28, 0.34]
         else:
