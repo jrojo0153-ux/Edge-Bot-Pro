@@ -2,84 +2,58 @@ import pandas as pd
 import numpy as np
 import joblib
 import os
+from datetime import datetime
 from config import SPORTS
 
 MODEL_DIR = "ml/models"
-os.makedirs(MODEL_DIR, exist_ok=True)
+DATA_DIR = "data"
+PENDING_PICKS = f"{DATA_DIR}/pendientes.csv"
+HISTORICO_FILE = f"{DATA_DIR}/Historico.csv"
 
-# ==================== MODELO DUMMY (fuera de funciones) ====================
+os.makedirs(MODEL_DIR, exist_ok=True)
+os.makedirs(DATA_DIR, exist_ok=True)
+
 class SmartDummyModel:
-    """Modelo simple que no depende de entrenamiento pesado"""
     def predict_proba(self, X):
         n = len(X)
         if SPORTS.get(self.sport, {}).get("has_draw", False):
-            # Fútbol: away, draw, home
             return np.array([[0.38, 0.28, 0.34]] * n)
         else:
-            # NBA / MLB: away, draw=0, home
             return np.array([[0.46, 0.00, 0.54]] * n)
     
-    # Guardamos el deporte para usarlo en predict_proba
     def __init__(self, sport):
         self.sport = sport
 
-def get_model_path(sport):
-    return f"{MODEL_DIR}/model_{sport}.pkl"
+def guardar_pick_enviado(match_data):
+    """Guarda el pick para ser auditado a las 10 PM"""
+    df = pd.DataFrame([match_data])
+    header = not os.path.exists(PENDING_PICKS)
+    df.to_csv(PENDING_PICKS, mode='a', index=False, header=header)
 
-def load_or_train_model(sport):
-    model_path = get_model_path(sport)
-    
-    if os.path.exists(model_path):
-        try:
-            model = joblib.load(model_path)
-            print(f"✅ Modelo cargado para {sport}")
-            return model, None
-        except:
-            print(f"⚠️ Error cargando modelo, creando nuevo...")
-    
-    print(f"🔄 Creando modelo dummy para {sport}...")
-    
-    # Mostrar info del histórico
-    try:
-        df = pd.read_csv("data/Historico.csv")
-        df.columns = df.columns.str.strip()
-        print(f"✅ Histórico cargado: {len(df)} picks")
-        print(f"   Deportes: {df['Deporte'].unique().tolist()}")
-    except Exception as e:
-        print(f"⚠️ No se pudo leer Historico.csv: {e}")
-    
-    # Crear y guardar el modelo
-    model = SmartDummyModel(sport)
-    joblib.dump(model, model_path)
-    print(f"✅ Modelo dummy guardado para {sport}")
-    
-    return model, None
+def audit_results(api_connector):
+    """Función para comparar resultados reales con los pendientes"""
+    if not os.path.exists(PENDING_PICKS):
+        print("No hay picks pendientes para auditar.")
+        return
 
-def predict_proba(match, model, scaler, sport):
-    """Predicción usando el modelo dummy"""
-    try:
-        probs = model.predict_proba([[0]])[0]
-    except:
-        # Fallback seguro
-        if SPORTS[sport]["has_draw"]:
-            probs = [0.38, 0.28, 0.34]
-        else:
-            probs = [0.46, 0.00, 0.54]
+    df_pendientes = pd.read_csv(PENDING_PICKS)
+    df_final = []
+
+    for _, pick in df_pendientes.iterrows():
+        # Aquí llamarías a tu API para obtener el resultado real
+        resultado_real = api_connector.get_final_result(pick['id_partido'])
+        
+        if resultado_real:
+            pick['resultado_final'] = resultado_real
+            pick['acierto'] = 1 if resultado_real == pick['prediccion'] else 0
+            df_final.append(pick)
     
-    has_draw = SPORTS[sport]["has_draw"]
-    
-    if has_draw:
-        return {
-            "home": round(probs[2], 3),
-            "draw": round(probs[1], 3),
-            "away": round(probs[0], 3)
-        }
-    else:
-        p_home = probs[2]
-        p_away = probs[0]
-        total = p_home + p_away + 1e-8
-        return {
-            "home": round(p_home / total, 3),
-            "away": round(p_away / total, 3),
-            "draw": 0.0
-        }
+    if df_final:
+        df_historico = pd.DataFrame(df_final)
+        header = not os.path.exists(HISTORICO_FILE)
+        df_historico.to_csv(HISTORICO_FILE, mode='a', index=False, header=header)
+        # Limpiar pendientes procesados
+        os.remove(PENDING_PICKS)
+        print(f"✅ Se auditaron {len(df_final)} partidos y se guardaron en el histórico.")
+
+# --- Mantén tus funciones load_or_train_model y predict_proba iguales ---
