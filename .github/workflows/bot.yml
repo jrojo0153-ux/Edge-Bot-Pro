@@ -1,13 +1,16 @@
-name: EDGE BOT PRO - Multi Deporte (Fútbol + NBA + MLB)
+name: EDGE BOT PRO - Multi Deporte
 
 on:
   schedule:
-    - cron: "*/30 * * * *"    # Ejecuta cada 30 minutos
-  workflow_dispatch:          # Permite ejecutar manualmente desde GitHub
+    - cron: "*/30 * * * *"    # Ejecución normal cada 30 min
+    - cron: "0 4 * * *"       # AUDITORÍA: 10 PM hora México (04:00 UTC)
+  workflow_dispatch:
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # CRÍTICO: Permite al bot guardar datos en tu repo
 
     steps:
       - name: Checkout código
@@ -17,7 +20,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: 'pip'                    # Cachea las dependencias para que sea más rápido
+          cache: 'pip'
 
       - name: Instalar dependencias
         run: |
@@ -31,7 +34,12 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
-      - name: Mostrar logs (opcional - útil para depurar)
+      # --- NUEVO: AUTO-GUARDADO (GIT PUSH) ---
+      - name: Guardar Cambios en Historico
         if: always()
         run: |
-          echo "Ejecución finalizada. Revisa los logs arriba para ver picks y errores."
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/*.csv ml/models/*.pkl
+          git commit -m "Actualización automática: Histórico y Modelos [skip ci]" || echo "No hay cambios para guardar"
+          git push
