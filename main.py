@@ -1,20 +1,18 @@
 import sys
+import os
 from datetime import datetime
 from pipeline import run_pipeline
-from ml.model import audit_results
-# Importa tu clase que conecta con la API (ejemplo: api_utils)
-# from api_utils import OddsAPI 
+from ml.model import audit_and_learn
 
 if __name__ == "__main__":
-    # Obtener hora actual en México
-    # (Ajuste simple de UTC a CDMX)
-    hora_actual = datetime.utcnow().hour - 6 
-    if hora_actual < 0: hora_actual += 24
-
-    if hora_actual == 22: # Si son las 10 PM
-        print("🌙 Iniciando ciclo de auditoría nocturna...")
-        # api = OddsAPI(key=os.getenv("API_KEY_ODDS"))
-        # audit_results(api)
+    # Obtener hora actual en CDMX (UTC-6)
+    hora_mx = (datetime.utcnow().hour - 6) % 24
+    
+    # A las 10 PM (22:00) corre la auditoría
+    if hora_mx == 22:
+        print("🌙 Hora de auditoría (10 PM MX). Verificando resultados del día...")
+        api_key = os.getenv("API_KEY_ODDS")
+        audit_and_learn(api_key)
     else:
-        print("🚀 Iniciando búsqueda de picks...")
+        # En cualquier otro horario, busca picks
         run_pipeline()
