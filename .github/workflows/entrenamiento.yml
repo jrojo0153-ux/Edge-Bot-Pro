@@ -1,0 +1,31 @@
+name: 🧠 Entrenamiento Edge Bot (10 PM MX)
+
+on:
+  schedule:
+    - cron: '0 4 * * *' # 04:00 UTC = 10:00 PM Hora Centro de México
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  entrenar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Ejecutar Entrenamiento (Generar Reglas)
+        run: python data/aprendizaje.py
+
+      - name: Guardar nuevo cerebro en el repositorio
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "🧠 Entrenamiento: Reglas actualizadas"
+          file_pattern: data/aprendizaje.txt
