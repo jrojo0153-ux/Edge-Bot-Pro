@@ -9,12 +9,27 @@ import logging
 # ... resto del cÃ³digo del pipeline ...
 
 def run_pipeline():
-    # ... (todo tu cÃ³digo anterior igual hasta el envÃ­o de Telegram)
-    
+    # 1. Obtener los datos (esto ya lo debes tener arriba)
+    # odds = get_odds(...)
+    # parlays = build_parlays(...)
+
+    # 2. CONSTRUIR EL MENSAJE (Lo que faltaba)
+    if not parlays:
+        logging.info("No hay parlays para enviar hoy.")
+        return
+
+    # Aquí creamos la variable 'msg'
+    msg = "🚀 **Nuevos Picks Detectados** 🚀\n\n"
+    for p in parlays:
+        msg += f"🔹 {p}\n" # Ajusta esto según cómo sea el objeto parlay
+
+    # 3. ENVIAR EL MENSAJE
+    # Ahora 'msg' ya existe y no dará error
     success = send_telegram_message(msg)
+    
     if success:
-        logger.info("Mensaje enviado a Telegram correctamente")
-        # GUARDAR PARA AUDITORÃA
+        logging.info("Mensaje enviado a Telegram correctamente")
         guardar_picks_enviados(parlays) 
     else:
-        logger.error("Fallo al enviar a Telegram")
+        logging.error("Fallo al enviar a Telegram")
+
