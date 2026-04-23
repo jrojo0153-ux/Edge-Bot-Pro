@@ -1,0 +1,38 @@
+name: ⚽ Predicciones Edge Bot (12 PM MX)
+
+on:
+  schedule:
+    - cron: '0 18 * * *' # 18:00 UTC = 12:00 PM (Mediodía) Hora Centro de México
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  predecir:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar Edge Bot Pro (Inferencia)
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python bot.py
+
+      - name: Guardar memoria de partidos procesados
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "🤖 Bot: Memoria de partidos actualizada"
+          file_pattern: data/procesados.txt
