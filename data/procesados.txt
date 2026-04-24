@@ -8,3 +8,8 @@
 2026-04-23_Timberwolves_Nuggets
 2026-04-23_Red_Sox_Yankees
 2026-04-23_Mets_Twins
+2026-04-24_76ers_Celtics
+2026-04-24_Rockets_Lakers
+2026-04-24_Trail_Blazers_Spurs
+2026-04-24_Reds_Tigers
+2026-04-24_Orioles_Red_Sox
