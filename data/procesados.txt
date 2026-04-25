@@ -13,3 +13,8 @@
 2026-04-24_Trail_Blazers_Spurs
 2026-04-24_Reds_Tigers
 2026-04-24_Orioles_Red_Sox
+2026-04-25_Hawks_Knicks
+2026-04-25_Timberwolves_Nuggets
+2026-04-25_Giants_Marlins
+2026-04-25_Rays_Twins
+2026-04-25_White_Sox_Nationals
