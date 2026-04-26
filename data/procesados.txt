@@ -18,3 +18,8 @@
 2026-04-25_Giants_Marlins
 2026-04-25_Rays_Twins
 2026-04-25_White_Sox_Nationals
+2026-04-26_76ers_Celtics
+2026-04-26_Rockets_Lakers
+2026-04-26_Giants_Marlins
+2026-04-26_Diamondbacks_Padres
+2026-04-26_Royals_Angels
