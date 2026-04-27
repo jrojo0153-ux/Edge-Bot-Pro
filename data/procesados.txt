@@ -23,3 +23,8 @@
 2026-04-26_Giants_Marlins
 2026-04-26_Diamondbacks_Padres
 2026-04-26_Royals_Angels
+2026-04-27_Magic_Pistons
+2026-04-27_Suns_Thunder
+2026-04-27_Nuggets_Timberwolves
+2026-04-27_Guardians_Rays
+2026-04-27_Pirates_Cardinals
