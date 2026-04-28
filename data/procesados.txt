@@ -28,3 +28,8 @@
 2026-04-27_Nuggets_Timberwolves
 2026-04-27_Guardians_Rays
 2026-04-27_Pirates_Cardinals
+2026-04-28_Celtics_76ers
+2026-04-28_Knicks_Hawks
+2026-04-28_Spurs_Trail_Blazers
+2026-04-28_Guardians_Rays
+2026-04-28_Orioles_Astros
