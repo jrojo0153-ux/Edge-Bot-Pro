@@ -33,3 +33,8 @@
 2026-04-28_Spurs_Trail_Blazers
 2026-04-28_Guardians_Rays
 2026-04-28_Orioles_Astros
+2026-04-29_Pistons_Magic
+2026-04-29_Cavaliers_Raptors
+2026-04-29_Lakers_Rockets
+2026-04-29_Padres_Cubs
+2026-04-29_Phillies_Giants
