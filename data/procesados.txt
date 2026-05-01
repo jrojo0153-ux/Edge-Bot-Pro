@@ -43,3 +43,8 @@
 2026-04-30_Timberwolves_Nuggets
 2026-04-30_Orioles_Astros
 2026-04-30_Phillies_Giants
+2026-05-01_Magic_Pistons
+2026-05-01_Raptors_Cavaliers
+2026-05-01_Rockets_Lakers
+2026-05-01_Tigers_Rangers
+2026-05-01_Pirates_Reds
