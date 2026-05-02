@@ -48,3 +48,8 @@
 2026-05-01_Rockets_Lakers
 2026-05-01_Tigers_Rangers
 2026-05-01_Pirates_Reds
+2026-05-02_Celtics_76ers
+2026-05-02_Pirates_Reds
+2026-05-02_Nationals_Brewers
+2026-05-02_Athletics_Guardians
+2026-05-02_Red_Sox_Astros
