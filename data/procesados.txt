@@ -53,3 +53,8 @@
 2026-05-02_Nationals_Brewers
 2026-05-02_Athletics_Guardians
 2026-05-02_Red_Sox_Astros
+2026-05-03_Pistons_Magic
+2026-05-03_Cavaliers_Raptors
+2026-05-03_Rockies_Braves
+2026-05-03_Athletics_Guardians
+2026-05-03_Angels_Mets
