@@ -58,3 +58,8 @@
 2026-05-03_Rockies_Braves
 2026-05-03_Athletics_Guardians
 2026-05-03_Angels_Mets
+2026-05-04_Knicks_76ers
+2026-05-04_Spurs_Timberwolves
+2026-05-04_Rockies_Mets
+2026-05-04_Tigers_Red_Sox
+2026-05-04_Marlins_Phillies
