@@ -63,3 +63,8 @@
 2026-05-04_Rockies_Mets
 2026-05-04_Tigers_Red_Sox
 2026-05-04_Marlins_Phillies
+2026-05-05_Pistons_Cavaliers
+2026-05-05_Thunder_Lakers
+2026-05-05_Phillies_Athletics
+2026-05-05_Marlins_Orioles
+2026-05-05_Tigers_Red_Sox
