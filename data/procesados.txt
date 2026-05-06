@@ -68,3 +68,8 @@
 2026-05-05_Phillies_Athletics
 2026-05-05_Marlins_Orioles
 2026-05-05_Tigers_Red_Sox
+2026-05-06_Knicks_76ers
+2026-05-06_Spurs_Timberwolves
+2026-05-06_Giants_Padres
+2026-05-06_Angels_White_Sox
+2026-05-06_Mariners_Braves
