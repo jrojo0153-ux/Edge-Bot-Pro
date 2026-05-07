@@ -1,0 +1,39 @@
+# .gitignore - Edge Bot Pro
+
+# Variables de entorno
+.env
+
+# Archivos compilados
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Logs
+*.log
+logs/
+
+# Datos sensibles
+data/*.txt
+data/*.csv
+data/*.json
+!data/aprendizaje.txt
+
+# Modelos ML
+ml/models/*.pkl
+ml/models/*.joblib
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Entornos virtuales
+venv/
+env/
+.venv/
