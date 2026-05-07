@@ -78,3 +78,8 @@
 2026-05-07_Liverpool_Chelsea
 2026-05-07_Brighton_&_Hove_Albion_Wolverhampton_Wanderers
 2026-05-07_Fulham_AFC_Bournemouth
+2026-05-07_Pistons_Cavaliers
+2026-05-07_Thunder_Lakers
+2026-05-07_Diamondbacks_Pirates
+2026-05-07_Phillies_Athletics
+2026-05-07_Marlins_Orioles
