@@ -1,59 +1,51 @@
+# core/parlay_builder.py - Constructor de Parlays
 import logging
+from config import PARLAY_SIZES
 
-def build_parlays(picks):
-    """
-    Recibe una lista de picks con 'edge' y 'odds' calculados.
-    Filtra cuotas exageradas y construye combinaciones lógicas.
-    """
-    if not picks:
-        return []
-    
-    # 1. FILTRO DE CORDURA: 
-    # Solo tomamos picks con cuotas entre 1.10 y 15.0 y con edge positivo.
-    # Esto elimina automáticamente los errores de datos.
-    picks_validos = [
-        p for p in picks 
-        if 1.10 <= p["odds"] <= 15.0 and p["edge"] > 0
-    ]
-    
-    # Ordenamos por el mayor 'edge' (valor detectado por el modelo)
-    picks_validos = sorted(picks_validos, key=lambda x: x["edge"], reverse=True)
+logger = logging.getLogger(__name__)
 
-    def create_parlay(name, size):
-        # Si no hay suficientes picks de calidad, no creamos este parlay
-        if len(picks_validos) < size:
-            logging.warning(f"No hay suficientes picks válidos para parlay {name}")
-            return None
-            
-        legs = picks_validos[:size]
-        total_odds = 1.0
-        for leg in legs:
-            total_odds *= leg["odds"]
-        
-        # Límite máximo de cuota combinada para mantener el realismo (ej. 500.0)
-        final_odds = round(total_odds, 2)
-        if final_odds > 1000.0:
-            final_odds = 1000.0
-            
-        return {
-            "type": name,
-            "legs": legs,
-            "odds": final_odds
-        }
+def calculate_parlay_odds(legs: list) -> float:
+    """Calcula la cuota total de un parlay multiplicando las cuotas individuales"""
+    odds = 1.0
+    for leg in legs:
+        odds *= leg["odds"]
+    return round(odds, 2)
+
+def build_parlays(picks: list, max_picks: int = 6) -> list:
+    """
+    Construye parlays de diferentes tamaños
     
-    # Construcción de los 3 niveles de riesgo
+    Args:
+        picks: Lista de picks ordenados por edge
+        max_picks: Tamaño máximo del parlay
+    
+    Returns:
+        list: Lista de parlays construidos
+    """
     parlays = []
     
-    # Conservador: 2 picks con más valor
-    p1 = create_parlay("🛡️ Conservador", 2)
-    if p1: parlays.append(p1)
+    if len(picks) < 2:
+        logger.warning("⚠️ No hay suficientes picks para construir parlays")
+        return parlays
     
-    # Balanceado: 4 picks
-    p2 = create_parlay("⚖️ Balanceado", 4)
-    if p2: parlays.append(p2)
-    
-    # Agresivo: 6 picks
-    p3 = create_parlay("💣 Agresivo", 6)
-    if p3: parlays.append(p3)
+    # Construir parlays de diferentes tamaños
+    for size_name, size in PARLAY_SIZES.items():
+        if size > len(picks):
+            continue
+            
+        legs = picks[:size]
+        
+        if not legs:
+            continue
+        
+        parlay = {
+            "type": size_name.capitalize(),
+            "legs": legs,
+            "odds": calculate_parlay_odds(legs),
+            "avg_edge": round(sum(p["edge"] for p in legs) / len(legs), 3)
+        }
+        
+        parlays.append(parlay)
+        logger.info(f"✅ Parlay {size_name} creado: {size} legs, odds {parlay['odds']}")
     
     return parlays
