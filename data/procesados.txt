@@ -83,3 +83,8 @@
 2026-05-07_Diamondbacks_Pirates
 2026-05-07_Phillies_Athletics
 2026-05-07_Marlins_Orioles
+2026-05-08_76ers_Knicks
+2026-05-08_Timberwolves_Spurs
+2026-05-08_Reds_Astros
+2026-05-08_Phillies_Rockies
+2026-05-08_Orioles_Athletics
