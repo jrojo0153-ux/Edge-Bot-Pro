@@ -98,3 +98,8 @@
 2026-05-10_Giants_Pirates
 2026-05-10_Dodgers_Braves
 2026-05-10_Diamondbacks_Mets
+2026-05-11_Cavaliers_Pistons
+2026-05-11_Lakers_Thunder
+2026-05-11_Guardians_Angels
+2026-05-11_Orioles_Yankees
+2026-05-11_Blue_Jays_Rays
