@@ -108,3 +108,8 @@
 2026-05-12_Orioles_Yankees
 2026-05-12_Pirates_Rockies
 2026-05-12_Reds_Nationals
+2026-05-13_Pistons_Cavaliers
+2026-05-13_Pirates_Rockies
+2026-05-13_Reds_Nationals
+2026-05-13_Red_Sox_Phillies
+2026-05-13_Blue_Jays_Rays
