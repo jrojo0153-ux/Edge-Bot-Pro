@@ -113,3 +113,8 @@
 2026-05-13_Reds_Nationals
 2026-05-13_Red_Sox_Phillies
 2026-05-13_Blue_Jays_Rays
+2026-05-14_Cavaliers_Pistons
+2026-05-14_Timberwolves_Spurs
+2026-05-14_Red_Sox_Phillies
+2026-05-14_Braves_Cubs
+2026-05-14_White_Sox_Royals
