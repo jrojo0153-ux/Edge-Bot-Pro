@@ -133,3 +133,8 @@
 2026-05-17_Athletics_Giants
 2026-05-17_Angels_Dodgers
 2026-05-17_Mariners_Padres
+2026-05-18_Thunder_Spurs
+2026-05-18_Marlins_Braves
+2026-05-18_Rays_Orioles
+2026-05-18_Phillies_Reds
+2026-05-18_Tigers_Guardians
