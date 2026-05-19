@@ -138,3 +138,8 @@
 2026-05-18_Rays_Orioles
 2026-05-18_Phillies_Reds
 2026-05-18_Tigers_Guardians
+2026-05-19_Knicks_Cavaliers
+2026-05-19_Marlins_Braves
+2026-05-19_Rays_Orioles
+2026-05-19_Phillies_Reds
+2026-05-19_Tigers_Guardians
