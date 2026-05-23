@@ -158,3 +158,8 @@
 2026-05-22_Yankees_Rays
 2026-05-22_Blue_Jays_Pirates
 2026-05-22_Red_Sox_Twins
+2026-05-23_Cavaliers_Knicks
+2026-05-23_Blue_Jays_Pirates
+2026-05-23_Phillies_Guardians
+2026-05-23_Giants_White_Sox
+2026-05-23_Red_Sox_Twins
