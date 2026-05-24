@@ -163,3 +163,8 @@
 2026-05-23_Phillies_Guardians
 2026-05-23_Giants_White_Sox
 2026-05-23_Red_Sox_Twins
+2026-05-24_Spurs_Thunder
+2026-05-24_Giants_White_Sox
+2026-05-24_Braves_Nationals
+2026-05-24_Padres_Athletics
+2026-05-24_Diamondbacks_Rockies
