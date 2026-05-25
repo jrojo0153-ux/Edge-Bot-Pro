@@ -168,3 +168,8 @@
 2026-05-24_Braves_Nationals
 2026-05-24_Padres_Athletics
 2026-05-24_Diamondbacks_Rockies
+2026-05-25_Cavaliers_Knicks
+2026-05-25_Royals_Yankees
+2026-05-25_Mets_Reds
+2026-05-25_Giants_Diamondbacks
+2026-05-25_Guardians_Nationals
