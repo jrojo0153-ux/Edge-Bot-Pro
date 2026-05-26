@@ -173,3 +173,8 @@
 2026-05-25_Mets_Reds
 2026-05-25_Giants_Diamondbacks
 2026-05-25_Guardians_Nationals
+2026-05-26_Thunder_Spurs
+2026-05-26_Guardians_Nationals
+2026-05-26_Orioles_Rays
+2026-05-26_Tigers_Angels
+2026-05-26_Pirates_Cubs
