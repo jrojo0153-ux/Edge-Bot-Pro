@@ -178,3 +178,8 @@
 2026-05-26_Orioles_Rays
 2026-05-26_Tigers_Angels
 2026-05-26_Pirates_Cubs
+2026-05-27_Spurs_Thunder
+2026-05-27_Padres_Phillies
+2026-05-27_Orioles_Rays
+2026-05-27_Tigers_Angels
+2026-05-27_Pirates_Cubs
