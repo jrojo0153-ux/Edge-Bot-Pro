@@ -192,3 +192,8 @@
 2026-05-29_Pirates_Twins
 2026-05-29_Nationals_Padres
 2026-05-29_Orioles_Blue_Jays
+2026-05-30_Thunder_Spurs
+2026-05-30_Pirates_Twins
+2026-05-30_Nationals_Padres
+2026-05-30_Orioles_Blue_Jays
+2026-05-30_Rangers_Royals
