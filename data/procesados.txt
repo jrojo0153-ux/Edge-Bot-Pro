@@ -197,3 +197,8 @@
 2026-05-30_Nationals_Padres
 2026-05-30_Orioles_Blue_Jays
 2026-05-30_Rangers_Royals
+2026-05-31_Spurs_Knicks
+2026-05-31_Rockies_Giants
+2026-05-31_Athletics_Yankees
+2026-05-31_Mariners_Diamondbacks
+2026-05-31_Dodgers_Phillies
