@@ -207,3 +207,8 @@
 2026-06-01_Nationals_Marlins
 2026-06-01_Reds_Royals
 2026-06-01_Twins_White_Sox
+2026-06-02_Spurs_Knicks
+2026-06-02_Rays_Tigers
+2026-06-02_Phillies_Padres
+2026-06-02_Red_Sox_Orioles
+2026-06-02_Nationals_Marlins
