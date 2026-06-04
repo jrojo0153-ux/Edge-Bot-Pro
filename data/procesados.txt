@@ -217,3 +217,8 @@
 2026-06-03_Red_Sox_Orioles
 2026-06-03_Yankees_Guardians
 2026-06-03_Reds_Royals
+2026-06-04_Spurs_Knicks
+2026-06-04_Braves_Blue_Jays
+2026-06-04_Twins_Royals
+2026-06-04_Cubs_Athletics
+2026-06-04_Astros_Pirates
