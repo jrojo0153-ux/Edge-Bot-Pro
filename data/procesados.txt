@@ -222,3 +222,8 @@
 2026-06-04_Twins_Royals
 2026-06-04_Cubs_Athletics
 2026-06-04_Astros_Pirates
+2026-06-05_Spurs_Knicks
+2026-06-05_Phillies_White_Sox
+2026-06-05_Tigers_Mariners
+2026-06-05_Yankees_Red_Sox
+2026-06-05_Blue_Jays_Orioles
