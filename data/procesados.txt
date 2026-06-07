@@ -232,3 +232,8 @@
 2026-06-06_Braves_Pirates
 2026-06-06_Marlins_Rays
 2026-06-06_Astros_Athletics
+2026-06-07_Knicks_Spurs
+2026-06-07_Dodgers_Angels
+2026-06-07_Padres_Mets
+2026-06-07_Cubs_Giants
+2026-06-07_AS_Roma_Fiorentina
