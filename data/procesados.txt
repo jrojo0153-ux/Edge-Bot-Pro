@@ -237,3 +237,8 @@
 2026-06-07_Padres_Mets
 2026-06-07_Cubs_Giants
 2026-06-07_AS_Roma_Fiorentina
+2026-06-08_Knicks_Spurs
+2026-06-08_Orioles_Mariners
+2026-06-08_Rays_Red_Sox
+2026-06-08_Guardians_Yankees
+2026-06-08_Blue_Jays_Phillies
