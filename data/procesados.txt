@@ -242,3 +242,8 @@
 2026-06-08_Rays_Red_Sox
 2026-06-08_Guardians_Yankees
 2026-06-08_Blue_Jays_Phillies
+2026-06-09_Knicks_Spurs
+2026-06-09_Orioles_Mariners
+2026-06-09_Marlins_Diamondbacks
+2026-06-09_Rays_Red_Sox
+2026-06-09_Pirates_Dodgers
