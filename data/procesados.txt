@@ -252,3 +252,8 @@
 2026-06-10_Marlins_Diamondbacks
 2026-06-10_Pirates_Dodgers
 2026-06-10_Tigers_Twins
+2026-06-11_Spurs_Knicks
+2026-06-11_Pirates_Dodgers
+2026-06-11_Orioles_Mariners
+2026-06-11_White_Sox_Braves
+2026-06-11_Necaxa_Atlante
