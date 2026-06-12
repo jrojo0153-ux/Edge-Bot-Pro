@@ -257,3 +257,8 @@
 2026-06-11_Orioles_Mariners
 2026-06-11_White_Sox_Braves
 2026-06-11_Necaxa_Atlante
+2026-06-12_Spurs_Knicks
+2026-06-12_Pirates_Marlins
+2026-06-12_Nationals_Mariners
+2026-06-12_Orioles_Padres
+2026-06-12_Guardians_Tigers
