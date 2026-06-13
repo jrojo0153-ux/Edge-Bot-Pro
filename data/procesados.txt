@@ -262,3 +262,8 @@
 2026-06-12_Nationals_Mariners
 2026-06-12_Orioles_Padres
 2026-06-12_Guardians_Tigers
+2026-06-13_Spurs_Knicks
+2026-06-13_Pirates_Marlins
+2026-06-13_Orioles_Padres
+2026-06-13_Nationals_Mariners
+2026-06-13_Reds_Diamondbacks
