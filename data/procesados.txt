@@ -272,3 +272,8 @@
 2026-06-14_Necaxa_Atlante
 2026-06-14_Tijuana_Tigres_UANL
 2026-06-14_AS_Roma_Fiorentina
+2026-06-15_Phillies_Marlins
+2026-06-15_Nationals_Royals
+2026-06-15_Reds_Mets
+2026-06-15_Cardinals_Padres
+2026-06-15_Cubs_Rockies
