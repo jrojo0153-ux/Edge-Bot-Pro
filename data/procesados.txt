@@ -282,3 +282,8 @@
 2026-06-16_Red_Sox_Blue_Jays
 2026-06-16_Yankees_White_Sox
 2026-06-16_Reds_Mets
+2026-06-17_Red_Sox_Blue_Jays
+2026-06-17_Yankees_White_Sox
+2026-06-17_Braves_Giants
+2026-06-17_Brewers_Guardians
+2026-06-17_Cubs_Rockies
