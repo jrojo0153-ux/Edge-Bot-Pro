@@ -287,3 +287,8 @@
 2026-06-17_Braves_Giants
 2026-06-17_Brewers_Guardians
 2026-06-17_Cubs_Rockies
+2026-06-18_Phillies_Mets
+2026-06-18_Yankees_White_Sox
+2026-06-18_Royals_Cardinals
+2026-06-18_Athletics_Angels
+2026-06-18_Necaxa_Atlante
