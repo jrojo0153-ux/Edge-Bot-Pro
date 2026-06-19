@@ -292,3 +292,8 @@
 2026-06-18_Royals_Cardinals
 2026-06-18_Athletics_Angels
 2026-06-18_Necaxa_Atlante
+2026-06-19_Tigers_White_Sox
+2026-06-19_Yankees_Reds
+2026-06-19_Marlins_Giants
+2026-06-19_Rays_Nationals
+2026-06-19_Braves_Brewers
