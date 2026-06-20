@@ -297,3 +297,8 @@
 2026-06-19_Marlins_Giants
 2026-06-19_Rays_Nationals
 2026-06-19_Braves_Brewers
+2026-06-20_Rangers_Padres
+2026-06-20_Braves_Brewers
+2026-06-20_Marlins_Giants
+2026-06-20_Rays_Nationals
+2026-06-20_Phillies_Mets
