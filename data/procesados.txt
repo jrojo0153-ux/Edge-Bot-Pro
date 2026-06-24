@@ -317,3 +317,8 @@
 2026-06-23_Tigers_Yankees
 2026-06-23_Pirates_Mariners
 2026-06-23_Marlins_Rangers
+2026-06-24_Angels_Orioles
+2026-06-24_Rays_Royals
+2026-06-24_Tigers_Yankees
+2026-06-24_Pirates_Mariners
+2026-06-24_Nationals_Phillies
