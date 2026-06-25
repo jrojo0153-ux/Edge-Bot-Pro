@@ -322,3 +322,8 @@
 2026-06-24_Tigers_Yankees
 2026-06-24_Pirates_Mariners
 2026-06-24_Nationals_Phillies
+2026-06-25_Tigers_Astros
+2026-06-25_Nationals_Phillies
+2026-06-25_Blue_Jays_Rangers
+2026-06-25_Mets_Cubs
+2026-06-25_Red_Sox_Yankees
