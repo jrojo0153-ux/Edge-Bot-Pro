@@ -332,3 +332,8 @@
 2026-06-26_Orioles_Nationals
 2026-06-26_Blue_Jays_Rangers
 2026-06-26_Rays_Diamondbacks
+2026-06-27_Pirates_Reds
+2026-06-27_Mets_Phillies
+2026-06-27_White_Sox_Royals
+2026-06-27_Rays_Diamondbacks
+2026-06-27_Orioles_Nationals
