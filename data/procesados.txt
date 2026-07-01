@@ -352,3 +352,8 @@
 2026-06-30_Guardians_Rangers
 2026-06-30_Yankees_Tigers
 2026-06-30_Blue_Jays_Mets
+2026-07-01_Phillies_Pirates
+2026-07-01_Braves_Cardinals
+2026-07-01_Royals_Rays
+2026-07-01_Brewers_Reds
+2026-07-01_Astros_Twins
