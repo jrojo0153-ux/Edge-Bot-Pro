@@ -362,3 +362,8 @@
 2026-07-02_Royals_Rays
 2026-07-02_Rangers_Tigers
 2026-07-02_Mariners_Angels
+2026-07-03_Cubs_Cardinals
+2026-07-03_Nationals_Pirates
+2026-07-03_Yankees_Twins
+2026-07-03_Reds_Orioles
+2026-07-03_Guardians_White_Sox
