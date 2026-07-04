@@ -367,3 +367,8 @@
 2026-07-03_Yankees_Twins
 2026-07-03_Reds_Orioles
 2026-07-03_Guardians_White_Sox
+2026-07-04_Rangers_Tigers
+2026-07-04_Mariners_Blue_Jays
+2026-07-04_Reds_Orioles
+2026-07-04_Guardians_White_Sox
+2026-07-04_Astros_Rays
