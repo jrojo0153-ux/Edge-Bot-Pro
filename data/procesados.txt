@@ -372,3 +372,8 @@
 2026-07-04_Reds_Orioles
 2026-07-04_Guardians_White_Sox
 2026-07-04_Astros_Rays
+2026-07-05_Rangers_Tigers
+2026-07-05_Astros_Rays
+2026-07-05_Rockies_Giants
+2026-07-05_Diamondbacks_Brewers
+2026-07-05_Athletics_Marlins
