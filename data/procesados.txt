@@ -377,3 +377,8 @@
 2026-07-05_Rockies_Giants
 2026-07-05_Diamondbacks_Brewers
 2026-07-05_Athletics_Marlins
+2026-07-06_Rays_Yankees
+2026-07-06_Nationals_Astros
+2026-07-06_Braves_Mets
+2026-07-06_Cardinals_Brewers
+2026-07-06_Padres_Diamondbacks
