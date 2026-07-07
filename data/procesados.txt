@@ -382,3 +382,8 @@
 2026-07-06_Braves_Mets
 2026-07-06_Cardinals_Brewers
 2026-07-06_Padres_Diamondbacks
+2026-07-07_Orioles_Cubs
+2026-07-07_Tigers_Athletics
+2026-07-07_Pirates_Braves
+2026-07-07_Rays_Yankees
+2026-07-07_Marlins_Mariners
