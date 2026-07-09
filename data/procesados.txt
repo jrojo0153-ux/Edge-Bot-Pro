@@ -392,3 +392,8 @@
 2026-07-08_Tigers_Athletics
 2026-07-08_Pirates_Braves
 2026-07-08_Rays_Yankees
+2026-07-09_Tigers_Athletics
+2026-07-09_Marlins_Mariners
+2026-07-09_Reds_Phillies
+2026-07-09_Cardinals_Brewers
+2026-07-09_Rangers_Angels
