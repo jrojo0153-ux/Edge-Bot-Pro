@@ -397,3 +397,8 @@
 2026-07-09_Reds_Phillies
 2026-07-09_Cardinals_Brewers
 2026-07-09_Rangers_Angels
+2026-07-10_Pirates_Brewers
+2026-07-10_Tigers_Phillies
+2026-07-10_Nationals_Yankees
+2026-07-10_Orioles_Royals
+2026-07-10_Reds_Cubs
