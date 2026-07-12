@@ -407,3 +407,8 @@
 2026-07-11_Giants_Rockies
 2026-07-11_Mets_Red_Sox
 2026-07-11_Marlins_Guardians
+2026-07-12_Giants_Rockies
+2026-07-12_Dodgers_Diamondbacks
+2026-07-12_Padres_Blue_Jays
+2026-07-12_Necaxa_Atlante
+2026-07-12_Tijuana_Tigres_UANL
