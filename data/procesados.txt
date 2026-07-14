@@ -417,3 +417,8 @@
 2026-07-13_Tijuana_Tigres_UANL
 2026-07-13_Arsenal_Coventry_City
 2026-07-13_Alavés_Getafe
+2026-07-14_All-Stars_All-Stars
+2026-07-14_Necaxa_Atlante
+2026-07-14_Tijuana_Tigres_UANL
+2026-07-14_Arsenal_Coventry_City
+2026-07-14_Alavés_Getafe
