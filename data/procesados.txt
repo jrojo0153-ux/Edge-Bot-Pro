@@ -427,3 +427,8 @@
 2026-07-15_Tijuana_Tigres_UANL
 2026-07-15_Arsenal_Coventry_City
 2026-07-15_Alavés_Getafe
+2026-07-16_Phillies_Mets
+2026-07-16_Necaxa_Atlante
+2026-07-16_Tijuana_Tigres_UANL
+2026-07-16_Arsenal_Coventry_City
+2026-07-16_Alavés_Getafe
