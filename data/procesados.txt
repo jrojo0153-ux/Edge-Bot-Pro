@@ -432,3 +432,8 @@
 2026-07-16_Tijuana_Tigres_UANL
 2026-07-16_Arsenal_Coventry_City
 2026-07-16_Alavés_Getafe
+2026-07-17_Yankees_Dodgers
+2026-07-17_Guardians_Pirates
+2026-07-17_Red_Sox_Rays
+2026-07-17_Blue_Jays_White_Sox
+2026-07-17_Braves_Rangers
