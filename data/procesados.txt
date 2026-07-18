@@ -437,3 +437,8 @@
 2026-07-17_Red_Sox_Rays
 2026-07-17_Blue_Jays_White_Sox
 2026-07-17_Braves_Rangers
+2026-07-18_Phillies_Mets
+2026-07-18_Blue_Jays_White_Sox
+2026-07-18_Rockies_Reds
+2026-07-18_Red_Sox_Rays
+2026-07-18_Braves_Rangers
