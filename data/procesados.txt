@@ -467,3 +467,8 @@
 2026-07-23_Cardinals_Diamondbacks
 2026-07-23_Tigers_Royals
 2026-07-23_Atlante_América
+2026-07-24_Kings_Lakers
+2026-07-24_Hawks_Grizzlies
+2026-07-24_Brewers_Rockies
+2026-07-24_Pirates_Cubs
+2026-07-24_Tigers_Royals
