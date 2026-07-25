@@ -472,3 +472,8 @@
 2026-07-24_Brewers_Rockies
 2026-07-24_Pirates_Cubs
 2026-07-24_Tigers_Royals
+2026-07-25_Kings_Lakers
+2026-07-25_Hawks_Grizzlies
+2026-07-25_Nationals_Diamondbacks
+2026-07-25_Giants_Angels
+2026-07-25_Marlins_Padres
