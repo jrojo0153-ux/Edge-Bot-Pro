@@ -477,3 +477,8 @@
 2026-07-25_Nationals_Diamondbacks
 2026-07-25_Giants_Angels
 2026-07-25_Marlins_Padres
+2026-07-26_Kings_Lakers
+2026-07-26_Hawks_Grizzlies
+2026-07-26_Giants_Angels
+2026-07-26_Phillies_Yankees
+2026-07-26_Necaxa_Monterrey
