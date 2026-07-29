@@ -492,3 +492,8 @@
 2026-07-28_Pirates_Diamondbacks
 2026-07-28_Tigers_Orioles
 2026-07-28_Marlins_Phillies
+2026-07-29_Raptors_Heat
+2026-07-29_Giants_Brewers
+2026-07-29_Padres_Rockies
+2026-07-29_Rays_Rangers
+2026-07-29_Reds_Guardians
