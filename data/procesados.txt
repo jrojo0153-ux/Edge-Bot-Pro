@@ -497,3 +497,8 @@
 2026-07-29_Padres_Rockies
 2026-07-29_Rays_Rangers
 2026-07-29_Reds_Guardians
+2026-07-30_Raptors_Heat
+2026-07-30_Braves_Nationals
+2026-07-30_Mets_Marlins
+2026-07-30_Reds_Pirates
+2026-07-30_Athletics_Red_Sox
