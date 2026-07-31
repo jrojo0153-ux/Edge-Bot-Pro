@@ -502,3 +502,8 @@
 2026-07-30_Mets_Marlins
 2026-07-30_Reds_Pirates
 2026-07-30_Athletics_Red_Sox
+2026-07-31_Raptors_Heat
+2026-07-31_Reds_Pirates
+2026-07-31_Orioles_Phillies
+2026-07-31_Blue_Jays_Cardinals
+2026-07-31_Guardians_Diamondbacks
