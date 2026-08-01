@@ -507,3 +507,8 @@
 2026-07-31_Orioles_Phillies
 2026-07-31_Blue_Jays_Cardinals
 2026-07-31_Guardians_Diamondbacks
+2026-08-01_Raptors_Heat
+2026-08-01_Blue_Jays_Cardinals
+2026-08-01_Rays_White_Sox
+2026-08-01_Mets_Marlins
+2026-08-01_Mariners_Twins
