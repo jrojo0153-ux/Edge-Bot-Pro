@@ -512,3 +512,8 @@
 2026-08-01_Rays_White_Sox
 2026-08-01_Mets_Marlins
 2026-08-01_Mariners_Twins
+2026-08-02_Raptors_Heat
+2026-08-02_Rockies_Royals
+2026-08-02_Angels_Brewers
+2026-08-02_Athletics_Tigers
+2026-08-02_Mariners_Twins
