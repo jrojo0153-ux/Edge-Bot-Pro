@@ -522,3 +522,8 @@
 2026-08-03_Yankees_Cardinals
 2026-08-03_Brewers_Pirates
 2026-08-03_Rangers_Giants
+2026-08-04_Raptors_Heat
+2026-08-04_Orioles_Angels
+2026-08-04_Reds_Athletics
+2026-08-04_Guardians_Mets
+2026-08-04_Phillies_Nationals
