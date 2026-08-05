@@ -527,3 +527,8 @@
 2026-08-04_Reds_Athletics
 2026-08-04_Guardians_Mets
 2026-08-04_Phillies_Nationals
+2026-08-05_Raptors_Heat
+2026-08-05_Orioles_Angels
+2026-08-05_Reds_Athletics
+2026-08-05_Guardians_Mets
+2026-08-05_Phillies_Nationals
