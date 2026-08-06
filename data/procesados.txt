@@ -532,3 +532,8 @@
 2026-08-05_Reds_Athletics
 2026-08-05_Guardians_Mets
 2026-08-05_Phillies_Nationals
+2026-08-06_Raptors_Heat
+2026-08-06_Diamondbacks_Padres
+2026-08-06_Arsenal_Coventry_City
+2026-08-06_Alavés_Getafe
+2026-08-06_Sevilla_Rayo_Vallecano
