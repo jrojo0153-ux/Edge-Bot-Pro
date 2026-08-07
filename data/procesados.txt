@@ -537,3 +537,8 @@
 2026-08-06_Arsenal_Coventry_City
 2026-08-06_Alavés_Getafe
 2026-08-06_Sevilla_Rayo_Vallecano
+2026-08-07_Raptors_Heat
+2026-08-07_Pirates_Mets
+2026-08-07_Phillies_Blue_Jays
+2026-08-07_Nationals_Reds
+2026-08-07_Yankees_Braves
