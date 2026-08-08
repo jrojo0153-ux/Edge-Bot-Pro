@@ -542,3 +542,8 @@
 2026-08-07_Phillies_Blue_Jays
 2026-08-07_Nationals_Reds
 2026-08-07_Yankees_Braves
+2026-08-08_Raptors_Heat
+2026-08-08_Yankees_Braves
+2026-08-08_Marlins_Angels
+2026-08-08_Red_Sox_Athletics
+2026-08-08_Phillies_Blue_Jays
