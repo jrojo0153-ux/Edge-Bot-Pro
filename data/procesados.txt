@@ -552,3 +552,8 @@
 2026-08-09_Giants_Tigers
 2026-08-09_Diamondbacks_Dodgers
 2026-08-09_Mariners_Rays
+2026-08-10_Raptors_Heat
+2026-08-10_Blue_Jays_Red_Sox
+2026-08-10_Braves_Mets
+2026-08-10_Twins_Orioles
+2026-08-10_Cardinals_Phillies
