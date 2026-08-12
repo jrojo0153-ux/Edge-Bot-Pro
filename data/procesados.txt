@@ -562,3 +562,8 @@
 2026-08-11_Marlins_Pirates
 2026-08-11_Nationals_Cubs
 2026-08-11_Yankees_Mariners
+2026-08-12_Raptors_Heat
+2026-08-12_Athletics_Rays
+2026-08-12_Diamondbacks_Rockies
+2026-08-12_Giants_Astros
+2026-08-12_Padres_Brewers
