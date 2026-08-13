@@ -567,3 +567,8 @@
 2026-08-12_Diamondbacks_Rockies
 2026-08-12_Giants_Astros
 2026-08-12_Padres_Brewers
+2026-08-13_Raptors_Heat
+2026-08-13_Blue_Jays_Red_Sox
+2026-08-13_Nationals_Cubs
+2026-08-13_Twins_Phillies
+2026-08-13_Angels_Rangers
