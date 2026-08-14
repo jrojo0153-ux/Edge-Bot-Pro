@@ -572,3 +572,8 @@
 2026-08-13_Nationals_Cubs
 2026-08-13_Twins_Phillies
 2026-08-13_Angels_Rangers
+2026-08-14_Raptors_Heat
+2026-08-14_Reds_Marlins
+2026-08-14_Pirates_Red_Sox
+2026-08-14_Tigers_White_Sox
+2026-08-14_Rays_Orioles
