@@ -587,3 +587,8 @@
 2026-08-16_Giants_Rockies
 2026-08-16_Athletics_Rangers
 2026-08-16_Angels_Royals
+2026-08-17_Raptors_Heat
+2026-08-17_Rays_Orioles
+2026-08-17_Phillies_Marlins
+2026-08-17_Reds_Cardinals
+2026-08-17_Pirates_Tigers
