@@ -592,3 +592,8 @@
 2026-08-17_Phillies_Marlins
 2026-08-17_Reds_Cardinals
 2026-08-17_Pirates_Tigers
+2026-08-18_Raptors_Heat
+2026-08-18_Orioles_Yankees
+2026-08-18_Pirates_Tigers
+2026-08-18_Phillies_Marlins
+2026-08-18_Guardians_Giants
