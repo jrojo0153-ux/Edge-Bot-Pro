@@ -597,3 +597,8 @@
 2026-08-18_Pirates_Tigers
 2026-08-18_Phillies_Marlins
 2026-08-18_Guardians_Giants
+2026-08-19_Raptors_Heat
+2026-08-19_Red_Sox_Diamondbacks
+2026-08-19_Phillies_Marlins
+2026-08-19_Orioles_Yankees
+2026-08-19_Guardians_Giants
