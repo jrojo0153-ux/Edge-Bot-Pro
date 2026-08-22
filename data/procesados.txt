@@ -612,3 +612,8 @@
 2026-08-21_Phillies_Cardinals
 2026-08-21_Yankees_Blue_Jays
 2026-08-21_Red_Sox_Giants
+2026-08-22_Raptors_Heat
+2026-08-22_Marlins_Nationals
+2026-08-22_Phillies_Cardinals
+2026-08-22_Orioles_Rays
+2026-08-22_Rangers_Angels
