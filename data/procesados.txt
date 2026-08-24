@@ -622,3 +622,8 @@
 2026-08-23_Rockies_Guardians
 2026-08-23_Red_Sox_Giants
 2026-08-23_Mariners_Cubs
+2026-08-24_Raptors_Heat
+2026-08-24_Marlins_Red_Sox
+2026-08-24_Tigers_Rays
+2026-08-24_Nationals_Rockies
+2026-08-24_White_Sox_Rangers
