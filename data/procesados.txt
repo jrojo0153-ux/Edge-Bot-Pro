@@ -627,3 +627,8 @@
 2026-08-24_Tigers_Rays
 2026-08-24_Nationals_Rockies
 2026-08-24_White_Sox_Rangers
+2026-08-25_Raptors_Heat
+2026-08-25_Marlins_Red_Sox
+2026-08-25_Tigers_Rays
+2026-08-25_Nationals_Rockies
+2026-08-25_Yankees_Astros
