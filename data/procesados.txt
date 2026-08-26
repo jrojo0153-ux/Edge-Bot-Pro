@@ -632,3 +632,8 @@
 2026-08-25_Tigers_Rays
 2026-08-25_Nationals_Rockies
 2026-08-25_Yankees_Astros
+2026-08-26_Raptors_Heat
+2026-08-26_Giants_Reds
+2026-08-26_Angels_Guardians
+2026-08-26_Mariners_Phillies
+2026-08-26_Padres_Pirates
