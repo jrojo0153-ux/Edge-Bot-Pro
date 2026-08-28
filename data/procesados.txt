@@ -637,3 +637,8 @@
 2026-08-26_Angels_Guardians
 2026-08-26_Mariners_Phillies
 2026-08-26_Padres_Pirates
+2026-08-28_Raptors_Heat
+2026-08-28_Atlante_León
+2026-08-28_Necaxa_Cruz_Azul
+2026-08-28_Tijuana_Pumas_UNAM
+2026-08-28_Crystal_Palace_Manchester_City
