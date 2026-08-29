@@ -647,3 +647,8 @@
 2026-08-29_Athletics_Orioles
 2026-08-29_Giants_Diamondbacks
 2026-08-29_Atlante_León
+2026-08-29_Yankees_Red_Sox
+2026-08-29_Brewers_Rangers
+2026-08-29_Atlas_Querétaro
+2026-08-29_Pachuca_Guadalajara
+2026-08-29_América_Puebla
