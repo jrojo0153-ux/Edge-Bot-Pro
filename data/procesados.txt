@@ -642,3 +642,8 @@
 2026-08-28_Necaxa_Cruz_Azul
 2026-08-28_Tijuana_Pumas_UNAM
 2026-08-28_Crystal_Palace_Manchester_City
+2026-08-29_Raptors_Heat
+2026-08-29_Angels_Phillies
+2026-08-29_Athletics_Orioles
+2026-08-29_Giants_Diamondbacks
+2026-08-29_Atlante_León
