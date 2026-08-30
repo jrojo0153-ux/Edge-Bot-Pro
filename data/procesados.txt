@@ -652,3 +652,7 @@
 2026-08-29_Atlas_Querétaro
 2026-08-29_Pachuca_Guadalajara
 2026-08-29_América_Puebla
+2026-08-30_Raptors_Heat
+2026-08-30_Cubs_Reds
+2026-08-30_Toluca_FC_Juarez
+2026-08-30_Monterrey_Atlético_de_San_Luis
