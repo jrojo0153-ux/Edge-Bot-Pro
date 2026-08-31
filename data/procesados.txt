@@ -656,3 +656,8 @@
 2026-08-30_Cubs_Reds
 2026-08-30_Toluca_FC_Juarez
 2026-08-30_Monterrey_Atlético_de_San_Luis
+2026-08-31_Raptors_Heat
+2026-08-31_Rays_Mets
+2026-08-31_Reds_Padres
+2026-08-31_Nationals_Marlins
+2026-08-31_Red_Sox_Mariners
