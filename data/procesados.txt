@@ -661,3 +661,8 @@
 2026-08-31_Reds_Padres
 2026-08-31_Nationals_Marlins
 2026-08-31_Red_Sox_Mariners
+2026-09-01_Raptors_Heat
+2026-09-01_Rays_Mets
+2026-09-01_Reds_Padres
+2026-09-01_Pirates_Giants
+2026-09-01_Guardians_Blue_Jays
