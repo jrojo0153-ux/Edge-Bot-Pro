@@ -666,3 +666,8 @@
 2026-09-01_Reds_Padres
 2026-09-01_Pirates_Giants
 2026-09-01_Guardians_Blue_Jays
+2026-09-02_Raptors_Heat
+2026-09-02_Rays_Mets
+2026-09-02_Pirates_Giants
+2026-09-02_Guardians_Blue_Jays
+2026-09-02_Twins_Tigers
