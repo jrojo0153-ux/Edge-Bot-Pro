@@ -671,3 +671,8 @@
 2026-09-02_Pirates_Giants
 2026-09-02_Guardians_Blue_Jays
 2026-09-02_Twins_Tigers
+2026-09-03_Raptors_Heat
+2026-09-03_Orioles_Red_Sox
+2026-09-03_Cubs_Brewers
+2026-09-03_Royals_Marlins
+2026-09-03_Rangers_Rays
