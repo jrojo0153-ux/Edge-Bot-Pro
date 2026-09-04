@@ -676,3 +676,8 @@
 2026-09-03_Cubs_Brewers
 2026-09-03_Royals_Marlins
 2026-09-03_Rangers_Rays
+2026-09-04_Raptors_Heat
+2026-09-04_Reds_Brewers
+2026-09-04_Pirates_Angels
+2026-09-04_Phillies_Braves
+2026-09-04_Orioles_Red_Sox
