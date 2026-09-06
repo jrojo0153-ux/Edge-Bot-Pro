@@ -686,3 +686,8 @@
 2026-09-05_Mets_Giants
 2026-09-05_Phillies_Braves
 2026-09-05_Guardians_Tigers
+2026-09-06_Raptors_Heat
+2026-09-06_Mariners_Athletics
+2026-09-06_Padres_Yankees
+2026-09-06_White_Sox_Twins
+2026-09-06_Dodgers_Nationals
