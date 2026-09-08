@@ -696,3 +696,8 @@
 2026-09-07_Giants_Cardinals
 2026-09-07_Dodgers_Reds
 2026-09-07_Athletics_Blue_Jays
+2026-09-08_Raptors_Heat
+2026-09-08_Orioles_Guardians
+2026-09-08_Phillies_Astros
+2026-09-08_Tigers_Twins
+2026-09-08_Marlins_Mets
