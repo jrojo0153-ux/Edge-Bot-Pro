@@ -706,3 +706,8 @@
 2026-09-09_Phillies_Astros
 2026-09-09_Marlins_Mets
 2026-09-09_Red_Sox_Angels
+2026-09-10_Raptors_Heat
+2026-09-10_Yankees_Rockies
+2026-09-10_White_Sox_Pirates
+2026-09-10_Pumas_UNAM_León
+2026-09-10_AFC_Bournemouth_Brentford
