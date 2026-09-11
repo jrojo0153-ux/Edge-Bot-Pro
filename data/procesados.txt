@@ -711,3 +711,8 @@
 2026-09-10_White_Sox_Pirates
 2026-09-10_Pumas_UNAM_León
 2026-09-10_AFC_Bournemouth_Brentford
+2026-09-11_Raptors_Heat
+2026-09-11_Tigers_Rockies
+2026-09-11_Nationals_Angels
+2026-09-11_Yankees_Mets
+2026-09-11_Blue_Jays_Orioles
