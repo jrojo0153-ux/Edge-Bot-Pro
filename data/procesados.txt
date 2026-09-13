@@ -721,3 +721,7 @@
 2026-09-12_Giants_Padres
 2026-09-12_Red_Sox_Royals
 2026-09-12_Marlins_Dodgers
+2026-09-13_Raptors_Heat
+2026-09-13_Giants_Padres
+2026-09-13_Santos_FC_Juarez
+2026-09-13_Guadalajara_Pumas_UNAM
