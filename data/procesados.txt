@@ -740,3 +740,8 @@
 2026-09-16_Reds_Dodgers
 2026-09-16_Pirates_Brewers
 2026-09-16_Nationals_Phillies
+2026-09-17_Raptors_Heat
+2026-09-17_Mets_Phillies
+2026-09-17_Astros_Royals
+2026-09-17_White_Sox_Tigers
+2026-09-17_Rangers_Red_Sox
