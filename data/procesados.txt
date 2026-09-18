@@ -745,3 +745,8 @@
 2026-09-17_Astros_Royals
 2026-09-17_White_Sox_Tigers
 2026-09-17_Rangers_Red_Sox
+2026-09-18_Raptors_Heat
+2026-09-18_Reds_Cubs
+2026-09-18_Pirates_Royals
+2026-09-18_Orioles_Brewers
+2026-09-18_Guardians_Athletics
