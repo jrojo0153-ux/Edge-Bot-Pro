@@ -750,3 +750,8 @@
 2026-09-18_Pirates_Royals
 2026-09-18_Orioles_Brewers
 2026-09-18_Guardians_Athletics
+2026-09-19_Raptors_Heat
+2026-09-19_Orioles_Brewers
+2026-09-19_Rays_Red_Sox
+2026-09-19_Mets_Phillies
+2026-09-19_Guardians_Athletics
