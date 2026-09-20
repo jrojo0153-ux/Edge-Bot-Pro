@@ -755,3 +755,8 @@
 2026-09-19_Rays_Red_Sox
 2026-09-19_Mets_Phillies
 2026-09-19_Guardians_Athletics
+2026-09-20_Raptors_Heat
+2026-09-20_Orioles_Brewers
+2026-09-20_Pachuca_Tijuana
+2026-09-20_Toluca_Santos
+2026-09-20_Querétaro_León
