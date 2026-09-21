@@ -760,3 +760,6 @@
 2026-09-20_Pachuca_Tijuana
 2026-09-20_Toluca_Santos
 2026-09-20_Querétaro_León
+2026-09-21_Raptors_Heat
+2026-09-21_Tigers_Nationals
+2026-09-21_Giants_Twins
