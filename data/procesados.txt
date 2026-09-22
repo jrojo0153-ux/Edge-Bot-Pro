@@ -763,3 +763,8 @@
 2026-09-21_Raptors_Heat
 2026-09-21_Tigers_Nationals
 2026-09-21_Giants_Twins
+2026-09-22_Raptors_Heat
+2026-09-22_Phillies_Brewers
+2026-09-22_Pirates_Cardinals
+2026-09-22_Tigers_Nationals
+2026-09-22_Red_Sox_Guardians
