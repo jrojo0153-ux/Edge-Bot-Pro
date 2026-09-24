@@ -773,3 +773,8 @@
 2026-09-23_Phillies_Brewers
 2026-09-23_Pirates_Cardinals
 2026-09-23_Red_Sox_Guardians
+2026-09-24_Raptors_Heat
+2026-09-24_Phillies_Brewers
+2026-09-24_Red_Sox_Guardians
+2026-09-24_Yankees_Rays
+2026-09-24_Braves_Reds
