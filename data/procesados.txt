@@ -778,3 +778,8 @@
 2026-09-24_Red_Sox_Guardians
 2026-09-24_Yankees_Rays
 2026-09-24_Braves_Reds
+2026-09-25_Raptors_Heat
+2026-09-25_Red_Sox_Cubs
+2026-09-25_Tigers_Pirates
+2026-09-25_Phillies_Rays
+2026-09-25_Nationals_Mets
