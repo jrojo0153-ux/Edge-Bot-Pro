@@ -783,3 +783,8 @@
 2026-09-25_Tigers_Pirates
 2026-09-25_Phillies_Rays
 2026-09-25_Nationals_Mets
+2026-09-26_Raptors_Heat
+2026-09-26_Royals_Guardians
+2026-09-26_White_Sox_Rockies
+2026-09-26_Brewers_Cardinals
+2026-09-26_Phillies_Rays
