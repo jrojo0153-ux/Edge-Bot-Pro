@@ -788,3 +788,6 @@
 2026-09-26_White_Sox_Rockies
 2026-09-26_Brewers_Cardinals
 2026-09-26_Phillies_Rays
+2026-09-27_Raptors_Heat
+2026-09-27_León_FC_Juarez
+2026-09-27_Necaxa_América
