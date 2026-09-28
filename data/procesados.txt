@@ -791,3 +791,8 @@
 2026-09-27_Raptors_Heat
 2026-09-27_León_FC_Juarez
 2026-09-27_Necaxa_América
+2026-09-28_Raptors_Heat
+2026-09-28_Braves_Phillies
+2026-09-28_Astros_White_Sox
+2026-09-28_Yankees_Red_Sox
+2026-09-28_Padres_Cubs
