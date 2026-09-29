@@ -796,3 +796,6 @@
 2026-09-28_Astros_White_Sox
 2026-09-28_Yankees_Red_Sox
 2026-09-28_Padres_Cubs
+2026-09-29_Raptors_Heat
+2026-09-29_Yankees_Red_Sox
+2026-09-29_Padres_Cubs
