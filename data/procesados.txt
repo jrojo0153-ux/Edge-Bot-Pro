@@ -799,3 +799,8 @@
 2026-09-29_Raptors_Heat
 2026-09-29_Yankees_Red_Sox
 2026-09-29_Padres_Cubs
+2026-09-30_Raptors_Heat
+2026-09-30_Yankees_Red_Sox
+2026-09-30_Padres_Cubs
+2026-09-30_Arsenal_Leeds_United
+2026-09-30_Aston_Villa_Brentford
