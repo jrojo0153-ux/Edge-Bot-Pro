@@ -804,3 +804,8 @@
 2026-09-30_Padres_Cubs
 2026-09-30_Arsenal_Leeds_United
 2026-09-30_Aston_Villa_Brentford
+2026-10-01_Raptors_Heat
+2026-10-01_Braves_Phillies
+2026-10-01_Arsenal_Leeds_United
+2026-10-01_Aston_Villa_Brentford
+2026-10-01_Chelsea_AFC_Bournemouth
