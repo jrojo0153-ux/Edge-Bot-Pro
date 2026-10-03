@@ -814,3 +814,8 @@
 2026-10-02_Dodgers_Braves
 2026-10-02_Rays_Yankees
 2026-10-02_Brewers_Padres
+2026-10-03_Raptors_Heat
+2026-10-03_Rays_Yankees
+2026-10-03_Brewers_Padres
+2026-10-03_Puebla_León
+2026-10-03_Tigres_UANL_Toluca
