@@ -819,3 +819,8 @@
 2026-10-03_Brewers_Padres
 2026-10-03_Puebla_León
 2026-10-03_Tigres_UANL_Toluca
+2026-10-04_Nuggets_Jazz
+2026-10-04_Clippers_Warriors
+2026-10-04_Dodgers_Braves
+2026-10-04_Puebla_León
+2026-10-04_Tigres_UANL_Toluca
