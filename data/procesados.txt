@@ -824,3 +824,8 @@
 2026-10-04_Dodgers_Braves
 2026-10-04_Puebla_León
 2026-10-04_Tigres_UANL_Toluca
+2026-10-05_Bucks_Timberwolves
+2026-10-05_Kings_Lakers
+2026-10-05_Rays_Yankees
+2026-10-05_Puebla_León
+2026-10-05_Tigres_UANL_Toluca
