@@ -829,3 +829,8 @@
 2026-10-05_Rays_Yankees
 2026-10-05_Puebla_León
 2026-10-05_Tigres_UANL_Toluca
+2026-10-06_Hornets_Nets
+2026-10-06_Thunder_Pelicans
+2026-10-06_Jazz_Nuggets
+2026-10-06_Warriors_Lakers
+2026-10-06_Padres_Brewers
