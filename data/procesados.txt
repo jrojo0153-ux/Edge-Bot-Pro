@@ -834,3 +834,8 @@
 2026-10-06_Jazz_Nuggets
 2026-10-06_Warriors_Lakers
 2026-10-06_Padres_Brewers
+2026-10-07_Pacers_Timberwolves
+2026-10-07_Grizzlies_Magic
+2026-10-07_Thunder_Bucks
+2026-10-07_Bulls_Suns
+2026-10-07_Trail_Blazers_Warriors
