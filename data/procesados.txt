@@ -844,3 +844,8 @@
 2026-10-08_Nets_76ers
 2026-10-08_Knicks_Wizards
 2026-10-08_Spurs_Hawks
+2026-10-09_Bulls_Grizzlies
+2026-10-09_Guardians_White_Sox
+2026-10-09_Puebla_León
+2026-10-09_Tigres_UANL_Toluca
+2026-10-09_Arsenal_Leeds_United
