@@ -849,3 +849,8 @@
 2026-10-09_Puebla_León
 2026-10-09_Tigres_UANL_Toluca
 2026-10-09_Arsenal_Leeds_United
+2026-10-10_Raptors_Clippers
+2026-10-10_Pacers_Hawks
+2026-10-10_Wizards_Pistons
+2026-10-10_Heat_Timberwolves
+2026-10-10_Celtics_76ers
