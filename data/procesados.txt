@@ -854,3 +854,8 @@
 2026-10-10_Wizards_Pistons
 2026-10-10_Heat_Timberwolves
 2026-10-10_Celtics_76ers
+2026-10-11_Cavaliers_Magic
+2026-10-11_Hornets_Bucks
+2026-10-11_Nuggets_Bulls
+2026-10-11_Brewers_Dodgers
+2026-10-11_Atlético_de_San_Luis_Santos
