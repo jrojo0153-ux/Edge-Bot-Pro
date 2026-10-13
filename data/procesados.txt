@@ -859,3 +859,5 @@
 2026-10-11_Nuggets_Bulls
 2026-10-11_Brewers_Dodgers
 2026-10-11_Atlético_de_San_Luis_Santos
+2026-10-13_Jazz_Spurs
+2026-10-13_Rays_Guardians
