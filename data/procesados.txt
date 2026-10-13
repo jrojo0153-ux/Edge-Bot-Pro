@@ -861,3 +861,8 @@
 2026-10-11_Atlético_de_San_Luis_Santos
 2026-10-13_Jazz_Spurs
 2026-10-13_Rays_Guardians
+2026-10-13_Magic_Cavaliers
+2026-10-13_Raptors_Knicks
+2026-10-13_Thunder_Pacers
+2026-10-13_Lakers_Warriors
+2026-10-13_Kings_Trail_Blazers
