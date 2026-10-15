@@ -871,3 +871,8 @@
 2026-10-14_Spurs_Suns
 2026-10-14_Mavericks_Pelicans
 2026-10-14_Bucks_Bulls
+2026-10-15_Knicks_Raptors
+2026-10-15_Rockets_Thunder
+2026-10-15_Dodgers_Brewers
+2026-10-15_Necaxa_Atlas
+2026-10-15_Atlante_Pumas_UNAM
