@@ -876,3 +876,8 @@
 2026-10-15_Dodgers_Brewers
 2026-10-15_Necaxa_Atlas
 2026-10-15_Atlante_Pumas_UNAM
+2026-10-16_Magic_Heat
+2026-10-16_76ers_Celtics
+2026-10-16_Pistons_Raptors
+2026-10-16_Pacers_Bucks
+2026-10-16_Mavericks_Hawks
