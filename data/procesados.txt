@@ -881,3 +881,8 @@
 2026-10-16_Pistons_Raptors
 2026-10-16_Pacers_Bucks
 2026-10-16_Mavericks_Hawks
+2026-10-17_Pistons_Celtics
+2026-10-17_Knicks_76ers
+2026-10-17_Spurs_Thunder
+2026-10-17_Guardians_Rays
+2026-10-17_Santos_Querétaro
