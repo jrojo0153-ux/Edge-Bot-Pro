@@ -886,3 +886,8 @@
 2026-10-17_Spurs_Thunder
 2026-10-17_Guardians_Rays
 2026-10-17_Santos_Querétaro
+2026-10-18_Pistons_Celtics
+2026-10-18_Knicks_76ers
+2026-10-18_Spurs_Thunder
+2026-10-18_Guardians_Rays
+2026-10-18_Monterrey_Pachuca
