@@ -896,3 +896,8 @@
 2026-10-19_Spurs_Thunder
 2026-10-19_Rays_Guardians
 2026-10-19_Guadalajara_Necaxa
+2026-10-20_Knicks_76ers
+2026-10-20_Spurs_Thunder
+2026-10-20_Brewers_Rays
+2026-10-20_Guadalajara_Necaxa
+2026-10-20_Atlético_de_San_Luis_Querétaro
