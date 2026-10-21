@@ -901,3 +901,8 @@
 2026-10-20_Brewers_Rays
 2026-10-20_Guadalajara_Necaxa
 2026-10-20_Atlético_de_San_Luis_Querétaro
+2026-10-21_Magic_Hawks
+2026-10-21_Wizards_Bucks
+2026-10-21_Heat_Timberwolves
+2026-10-21_Nets_Hornets
+2026-10-21_Raptors_Bulls
