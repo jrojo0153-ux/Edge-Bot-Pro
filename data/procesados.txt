@@ -906,3 +906,8 @@
 2026-10-21_Heat_Timberwolves
 2026-10-21_Nets_Hornets
 2026-10-21_Raptors_Bulls
+2026-10-22_76ers_Cavaliers
+2026-10-22_Thunder_Nuggets
+2026-10-22_Brewers_Rays
+2026-10-22_Necaxa_FC_Juárez
+2026-10-22_Atlante_Atlético_de_San_Luis
