@@ -911,3 +911,8 @@
 2026-10-22_Brewers_Rays
 2026-10-22_Necaxa_FC_Juárez
 2026-10-22_Atlante_Atlético_de_San_Luis
+2026-10-23_Celtics_Knicks
+2026-10-23_Hornets_Hawks
+2026-10-23_Pacers_Mavericks
+2026-10-23_Magic_Timberwolves
+2026-10-23_Wizards_Raptors
