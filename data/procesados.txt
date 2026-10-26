@@ -926,3 +926,8 @@
 2026-10-25_Knicks_Magic
 2026-10-25_Timberwolves_Raptors
 2026-10-25_Thunder_Clippers
+2026-10-26_Hornets_Wizards
+2026-10-26_Cavaliers_Timberwolves
+2026-10-26_Celtics_Bulls
+2026-10-26_Heat_Mavericks
+2026-10-26_Bucks_Pacers
