@@ -931,3 +931,8 @@
 2026-10-26_Celtics_Bulls
 2026-10-26_Heat_Mavericks
 2026-10-26_Bucks_Pacers
+2026-10-27_Celtics_Nets
+2026-10-27_Knicks_Pistons
+2026-10-27_Spurs_Kings
+2026-10-27_Lakers_Trail_Blazers
+2026-10-27_Rays_Brewers
