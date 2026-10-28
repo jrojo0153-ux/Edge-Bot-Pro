@@ -936,3 +936,8 @@
 2026-10-27_Spurs_Kings
 2026-10-27_Lakers_Trail_Blazers
 2026-10-27_Rays_Brewers
+2026-10-28_Hawks_Heat
+2026-10-28_Cavaliers_Wizards
+2026-10-28_Pistons_Hornets
+2026-10-28_Pacers_76ers
+2026-10-28_Raptors_Magic
