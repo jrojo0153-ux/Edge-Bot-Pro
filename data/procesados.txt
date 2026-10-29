@@ -941,3 +941,8 @@
 2026-10-28_Pistons_Hornets
 2026-10-28_Pacers_76ers
 2026-10-28_Raptors_Magic
+2026-10-29_Hawks_Cavaliers
+2026-10-29_Pelicans_Kings
+2026-10-29_Trail_Blazers_Grizzlies
+2026-10-29_Atlético_de_San_Luis_Atlas
+2026-10-29_FC_Juárez_Querétaro
