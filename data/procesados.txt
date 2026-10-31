@@ -951,3 +951,8 @@
 2026-10-30_Nets_Pistons
 2026-10-30_76ers_Knicks
 2026-10-30_Raptors_Magic
+2026-10-31_Hornets_76ers
+2026-10-31_Pelicans_Hawks
+2026-10-31_Grizzlies_Kings
+2026-10-31_Bucks_Cavaliers
+2026-10-31_Spurs_Timberwolves
