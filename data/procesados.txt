@@ -961,3 +961,8 @@
 2026-11-01_Lakers_Raptors
 2026-11-01_Santos_Necaxa
 2026-11-01_Cruz_Azul_León
+2026-11-03_Hornets_Pistons
+2026-11-03_Pacers_Hawks
+2026-11-03_Knicks_Nets
+2026-11-03_Magic_Wizards
+2026-11-03_76ers_Bulls
