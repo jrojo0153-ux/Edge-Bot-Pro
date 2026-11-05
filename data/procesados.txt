@@ -976,3 +976,8 @@
 2026-11-04_Celtics_Bucks
 2026-11-04_Nets_Hornets
 2026-11-04_Knicks_Bulls
+2026-11-05_Suns_Magic
+2026-11-05_Warriors_Heat
+2026-11-05_Atlético_de_San_Luis_FC_Juárez
+2026-11-05_Necaxa_Tijuana
+2026-11-05_Atlante_Santos
