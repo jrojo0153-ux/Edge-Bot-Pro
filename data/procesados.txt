@@ -981,3 +981,8 @@
 2026-11-05_Atlético_de_San_Luis_FC_Juárez
 2026-11-05_Necaxa_Tijuana
 2026-11-05_Atlante_Santos
+2026-11-06_Hawks_Wizards
+2026-11-06_Hornets_Celtics
+2026-11-06_Cavaliers_76ers
+2026-11-06_Mavericks_Jazz
+2026-11-06_Grizzlies_Thunder
