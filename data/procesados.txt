@@ -991,3 +991,8 @@
 2026-11-07_Cavaliers_Knicks
 2026-11-07_Thunder_Wizards
 2026-11-07_Warriors_Magic
+2026-11-08_Pistons_Lakers
+2026-11-08_Timberwolves_Jazz
+2026-11-08_Mavericks_Nets
+2026-11-08_Bucks_Celtics
+2026-11-08_Clippers_Pelicans
