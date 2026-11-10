@@ -1000,3 +1000,8 @@
 2026-11-10_Rockets_Nuggets
 2026-11-10_Suns_Spurs
 2026-11-10_Warriors_Pelicans
+2026-11-10_Knicks_Bucks
+2026-11-10_76ers_Celtics
+2026-11-10_Suns_Clippers
+2026-11-10_Jazz_Heat
+2026-11-10_Kings_Magic
