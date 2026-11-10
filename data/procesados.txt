@@ -996,3 +996,7 @@
 2026-11-08_Mavericks_Nets
 2026-11-08_Bucks_Celtics
 2026-11-08_Clippers_Pelicans
+2026-11-10_Mavericks_Pacers
+2026-11-10_Rockets_Nuggets
+2026-11-10_Suns_Spurs
+2026-11-10_Warriors_Pelicans
