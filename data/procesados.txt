@@ -1010,3 +1010,8 @@
 2026-11-11_Raptors_Celtics
 2026-11-11_Bulls_Spurs
 2026-11-11_Grizzlies_Nuggets
+2026-11-12_76ers_Raptors
+2026-11-12_Wizards_Pistons
+2026-11-12_Timberwolves_Mavericks
+2026-11-12_Suns_Hornets
+2026-11-12_Querétaro_Monterrey
