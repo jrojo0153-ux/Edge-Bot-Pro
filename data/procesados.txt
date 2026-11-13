@@ -1015,3 +1015,8 @@
 2026-11-12_Timberwolves_Mavericks
 2026-11-12_Suns_Hornets
 2026-11-12_Querétaro_Monterrey
+2026-11-13_Pacers_Knicks
+2026-11-13_Magic_Bucks
+2026-11-13_Heat_Cavaliers
+2026-11-13_Bulls_Hawks
+2026-11-13_Pelicans_Grizzlies
